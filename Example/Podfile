@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'SpeechMaster_Example' do
+  pod 'SpeechMaster', :path => '../'
+
+  target 'SpeechMaster_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
