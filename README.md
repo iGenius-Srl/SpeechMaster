@@ -1,5 +1,7 @@
 # SpeechMaster
 
+Work in progress
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
@@ -18,7 +20,9 @@ pod 'SpeechMaster'
 ## Author
 
 Alex Gotev
+
 Andrea Antonioni
+
 Kristiyan Petrov
 
 ## License

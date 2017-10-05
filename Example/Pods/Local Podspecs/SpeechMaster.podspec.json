@@ -3,20 +3,23 @@
   "version": "0.1.0",
   "summary": "A short description of SpeechMaster.",
   "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/kristiyanP/SpeechMaster",
+  "homepage": "https://github.com/MoonCoders/SpeechMaster",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
   },
   "authors": {
-    "kristiyanP": "petkris_bg@hotmail.it"
+    "Kristiyan Petrov": "petrov.kristiyan@gmail.com",
+    "Andrea Antonioni": "andreaantonioni97@gmail.com",
+    "Alex Gotev": "alexgotev@gmail.com"
   },
   "source": {
-    "git": "https://github.com/kristiyanP/SpeechMaster.git",
+    "git": "https://github.com/MoonCoders/SpeechMaster.git",
     "tag": "0.1.0"
   },
+  "social_media_url": "https://twitter.com/MoonCoders",
   "platforms": {
-    "ios": "8.0"
+    "ios": "10.0"
   },
   "source_files": "SpeechMaster/Classes/**/*"
 }
