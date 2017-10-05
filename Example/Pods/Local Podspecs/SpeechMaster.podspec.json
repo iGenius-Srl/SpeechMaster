@@ -1,0 +1,22 @@
+{
+  "name": "SpeechMaster",
+  "version": "0.1.0",
+  "summary": "A short description of SpeechMaster.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/kristiyanP/SpeechMaster",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "kristiyanP": "petkris_bg@hotmail.it"
+  },
+  "source": {
+    "git": "https://github.com/kristiyanP/SpeechMaster.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "SpeechMaster/Classes/**/*"
+}

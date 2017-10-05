@@ -1,0 +1,6 @@
+framework module SpeechMaster {
+  umbrella header "SpeechMaster-umbrella.h"
+
+  export *
+  module * { export * }
+}
