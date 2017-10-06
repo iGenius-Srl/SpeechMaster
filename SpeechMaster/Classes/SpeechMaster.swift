@@ -80,21 +80,21 @@ public class SpeechMaster: NSObject {
     var 🗣: Bool = false
     
     // Player
-    var startPlayer: AVAudioPlayerNode!
-    var stopPlayer: AVAudioPlayerNode!
+    var startPlayer: AVAudioPlayerNode?
+    var stopPlayer: AVAudioPlayerNode?
     
     lazy var startAudioFile: AVAudioFile? = {
-        guard microphoneSoundOn != nil else {
+        guard let microphoneSoundOn = microphoneSoundOn else {
             return nil
         }
-        return try? AVAudioFile(forReading: microphoneSoundOn!)
+        return try? AVAudioFile(forReading: microphoneSoundOn)
     }()
     
     lazy var stopAudioFile: AVAudioFile? = {
-        guard microphoneSoundOff != nil else {
+        guard let microphoneSoundOff = microphoneSoundOff else {
             return nil
         }
-        return try! AVAudioFile(forReading: microphoneSoundOff!)
+        return try? AVAudioFile(forReading: microphoneSoundOff)
     }()
     
     // MARK: - AVAudioSession
@@ -158,8 +158,8 @@ public class SpeechMaster: NSObject {
         
         audioEngine.prepare()
         do {
-            if startAudioFile != nil {
-                startPlayer?.scheduleFile(startAudioFile!, at: nil)
+            if let startAudioFile = startAudioFile {
+                startPlayer?.scheduleFile(startAudioFile, at: nil)
             }
             try audioEngine.start()
             startPlayer?.play()
@@ -173,13 +173,19 @@ public class SpeechMaster: NSObject {
     }
     
     private func stopAudioEngine() {
-        stopPlayer?.scheduleFile(stopAudioFile!, at: nil) {
-            self.startPlayer = nil
-            self.stopPlayer = nil
+        
+        if let stopAudioFile = stopAudioFile {
+            stopPlayer?.scheduleFile(stopAudioFile, at: nil) {
+                self.startPlayer = nil
+                self.stopPlayer = nil
+                self.audioEngine.stop()
+                self.audioEngine.reset()
+            }
+            stopPlayer?.play()
+        } else {
             self.audioEngine.stop()
             self.audioEngine.reset()
         }
-        stopPlayer?.play()
         
         audioEngine.inputNode.removeTap(onBus: 0)
     }
@@ -188,18 +194,18 @@ public class SpeechMaster: NSObject {
     
     private func setupAudioPlayerNode() {
        
-        if microphoneSoundOn != nil {
+        if let startAudioFile = startAudioFile {
             startPlayer = AVAudioPlayerNode()
-            self.connect(playerNode: startPlayer, for: microphoneSoundOn!, format: startAudioFile!.processingFormat)
+            self.connect(playerNode: startPlayer!, format: startAudioFile.processingFormat)
         }
         
-        if microphoneSoundOff != nil {
+        if let stopAudioFile = stopAudioFile {
             stopPlayer = AVAudioPlayerNode()
-            self.connect(playerNode: stopPlayer, for: microphoneSoundOff!, format: stopAudioFile!.processingFormat)
+            self.connect(playerNode: stopPlayer!, format: stopAudioFile.processingFormat)
         }
     }
     
-    private func connect(playerNode node: AVAudioPlayerNode, for url: URL, format: AVAudioFormat) {
+    private func connect(playerNode node: AVAudioPlayerNode, format: AVAudioFormat) {
         audioEngine.attach(node)
         audioEngine.connect(node, to: audioEngine.mainMixerNode, format: format)
     }
