@@ -11,9 +11,18 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var textLabel: UILabel!
     
+    lazy var speechMaster: SpeechMaster = {
+        let speechMaster = SpeechMaster()
+        speechMaster.resultDelegate = self
+        speechMaster.requestDelegate = self
+        speechMaster.microphoneSoundOn = Bundle.main.url(forResource: "start", withExtension: "wav")
+        speechMaster.microphoneSoundOff = Bundle.main.url(forResource: "end", withExtension: "wav")
+        speechMaster.microphoneSoundCancel = Bundle.main.url(forResource: "error", withExtension: "wav")
+        return speechMaster
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,24 +35,23 @@ class ViewController: UIViewController {
     }
     
     @IBAction func stopAction(_ sender: Any) {
-        SpeechMaster.sharedInstance.stopRecognition()
+        speechMaster.stopRecognition()
         
     }
     
     @IBAction func cancelAction(_ sender: Any) {
-        SpeechMaster.sharedInstance.cancelRecognition()
+        speechMaster.cancelRecognition()
     }
 }
 
 extension ViewController: SpeechRequestDelegate {
     
     func speechAuthorized() {
-      SpeechMaster.sharedInstance.resultDelegate = self
-      SpeechMaster.sharedInstance.requestDelegate = self
-      SpeechMaster.sharedInstance.microphoneSoundOn = Bundle.main.url(forResource: "start", withExtension: "wav")
-      SpeechMaster.sharedInstance.microphoneSoundOff = Bundle.main.url(forResource: "end", withExtension: "wav")
-      SpeechMaster.sharedInstance.microphoneSoundCancel = Bundle.main.url(forResource: "error", withExtension: "wav")
-      SpeechMaster.sharedInstance.startRecognition()
+      speechMaster.startRecognition()
+    }
+    
+    func speechNotAvailable() {
+        print("Speech not available")
     }
     
     func speechNotAuthorized(_ authStatus: SFSpeechRecognizerAuthorizationStatus) {
@@ -54,15 +62,16 @@ extension ViewController: SpeechRequestDelegate {
 
 extension ViewController: SpeechResultDelegate {
     
-    func speechResult(withText text: String?, isFinal: Bool) {
+    func speechResult(_ speechMaster: SpeechMaster, withText text: String?, isFinal: Bool) {
         textLabel.text = text
     }
     
-    func speechWasCancelled() {
-        
+    func speechWasCancelled(_ speechMaster: SpeechMaster) {
+        print("Speech was cancelled")
     }
     
-    func speechDidFail() {
-        
+    func speechDidFail(_ speechMaster: SpeechMaster, withError error: Error) {
+        print("Speech did fail")
     }
+    
 }

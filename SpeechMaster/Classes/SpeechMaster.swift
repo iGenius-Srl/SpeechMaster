@@ -41,17 +41,14 @@ extension SpeechRequestDelegate where Self: UIViewController {
 // MARK: - SpeechResultDelegate
 
 public protocol SpeechResultDelegate: class {
-    func speechResult(withText text: String?, isFinal: Bool)
-    func speechWasCancelled()
-    func speechDidFail()
+    func speechResult(_ speechMaster: SpeechMaster, withText text: String?, isFinal: Bool)
+    func speechWasCancelled(_ speechMaster: SpeechMaster)
+    func speechDidFail(_ speechMaster: SpeechMaster, withError error: Error)
 }
 
 // MARK: - Speech
 
 public class SpeechMaster: NSObject {
-    
-    public static var sharedInstance = SpeechMaster()
-    internal override init() { }
     
     public var microphoneSoundOn: URL?
     public var microphoneSoundOff: URL?
@@ -117,8 +114,8 @@ public class SpeechMaster: NSObject {
         
         do {
             try setRecordingAudioSession(active: true)
-        } catch {
-            self.resultDelegate?.speechDidFail()
+        } catch (let error) {
+            self.resultDelegate?.speechDidFail(self, withError: error)
         }
         
         request = SFSpeechAudioBufferRecognitionRequest()
@@ -240,7 +237,7 @@ extension SpeechMaster: SFSpeechRecognitionTaskDelegate {
     // Called for all recognitions, including non-final hypothesis
     public func speechRecognitionTask(_ task: SFSpeechRecognitionTask, didHypothesizeTranscription transcription: SFTranscription) {
         self.initializeIdleTimer()
-        self.resultDelegate?.speechResult(withText: transcription.formattedString, isFinal: false)
+        self.resultDelegate?.speechResult(self, withText: transcription.formattedString, isFinal: false)
     }
     
     // Called when the task is no longer accepting new audio but may be finishing final processing
@@ -252,7 +249,7 @@ extension SpeechMaster: SFSpeechRecognitionTaskDelegate {
     public func speechRecognitionTaskWasCancelled(_ task: SFSpeechRecognitionTask) {
         print("Task cancelled")
         self.destroyIdleTimer()
-        self.resultDelegate?.speechWasCancelled()
+        self.resultDelegate?.speechWasCancelled(self)
     }
     
     // Called when recognition of all requested utterances is finished.
@@ -264,17 +261,17 @@ extension SpeechMaster: SFSpeechRecognitionTaskDelegate {
         print("Task finisched")
         print("successfully: \(successfully)")
         
-        guard task.error != nil else { return }
+        guard let error = task.error else { return }
         
         self.destroyIdleTimer()
-        !🗣 ? self.resultDelegate?.speechResult(withText: nil, isFinal: true) : self.resultDelegate?.speechDidFail()
+        !🗣 ? self.resultDelegate?.speechResult(self, withText: nil, isFinal: true) : self.resultDelegate?.speechDidFail(self, withError: error)
     }
     
     // Called only for final recognitions of utterances. No more about the utterance will be reported
     public func speechRecognitionTask(_ task: SFSpeechRecognitionTask, didFinishRecognition recognitionResult: SFSpeechRecognitionResult) {
         print("Final result")
         self.destroyIdleTimer()
-        self.resultDelegate?.speechResult(withText: recognitionResult.bestTranscription.formattedString, isFinal: true)
+        self.resultDelegate?.speechResult(self, withText: recognitionResult.bestTranscription.formattedString, isFinal: true)
     }
     
 }
