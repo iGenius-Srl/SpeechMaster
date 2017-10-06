@@ -1,4 +1,5 @@
 # SpeechMaster
+[![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=59d739a9d064f3000162729a&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/59d739a9d064f3000162729a/build/latest?branch=master)
 
 Work in progress
 
