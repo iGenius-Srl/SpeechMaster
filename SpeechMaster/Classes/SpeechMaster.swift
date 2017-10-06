@@ -60,8 +60,8 @@ public class SpeechMaster: NSObject {
     public weak var resultDelegate: SpeechResultDelegate?
     
     // Speech
-    lazy private var speechRecognizer: SFSpeechRecognizer = {
-        return SFSpeechRecognizer() ?? SFSpeechRecognizer(locale: locale)!
+    lazy private var speechRecognizer: SFSpeechRecognizer? = {
+        return SFSpeechRecognizer(locale: locale)
     }()
     private var request: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
@@ -77,21 +77,18 @@ public class SpeechMaster: NSObject {
     var 🗣: Bool = false
     
     // Player
-    var startPlayer: AVAudioPlayerNode?
-    var stopPlayer: AVAudioPlayerNode?
-    
-    lazy var startAudioFile: AVAudioFile? = {
+    lazy var startPlayer: AVAudioPlayer? = {
         guard let microphoneSoundOn = microphoneSoundOn else {
             return nil
         }
-        return try? AVAudioFile(forReading: microphoneSoundOn)
+        return try? AVAudioPlayer(contentsOf: microphoneSoundOn)
     }()
     
-    lazy var stopAudioFile: AVAudioFile? = {
+    lazy var stopPlayer: AVAudioPlayer? = {
         guard let microphoneSoundOff = microphoneSoundOff else {
             return nil
         }
-        return try? AVAudioFile(forReading: microphoneSoundOff)
+        return try? AVAudioPlayer(contentsOf: microphoneSoundOff)
     }()
     
     // MARK: - AVAudioSession
@@ -106,6 +103,16 @@ public class SpeechMaster: NSObject {
     // MARK: - Methods
     
     public func startRecognition() {
+        
+        guard let speechRecognizer = speechRecognizer else {
+            self.resultDelegate?.speechDidFail(self, withError: SpeechMasterError.localeNotSupported)
+            return
+        }
+        
+        guard !audioEngine.isRunning else {
+            print("SpeechMaster is already running")
+            return
+        }
         
         guard speechRecognizer.isAvailable else {
             self.requestDelegate?.speechNotAvailable?()
@@ -130,22 +137,22 @@ public class SpeechMaster: NSObject {
     }
     
     public func stopRecognition() {
-        stopAudioEngine()
+        guard audioEngine.isRunning else { return }
         request?.endAudio()
+        stopAudioEngine()
         recognitionTask?.finish()
     }
     
     public func cancelRecognition() {
-        stopAudioEngine()
+        guard audioEngine.isRunning else { return }
         request?.endAudio()
+        stopAudioEngine()
         recognitionTask?.cancel()
     }
     
     // MARK: - AVAudioEngine
     
     private func startAudioEngine() {
-        
-        setupAudioPlayerNode()
         
         let recordingFormat = audioEngine.inputNode.outputFormat(forBus: 0)
         audioEngine.inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer, when) in
@@ -155,10 +162,9 @@ public class SpeechMaster: NSObject {
         
         audioEngine.prepare()
         do {
-            if let startAudioFile = startAudioFile {
-                startPlayer?.scheduleFile(startAudioFile, at: nil)
-            }
+            
             try audioEngine.start()
+            startPlayer?.currentTime = 0
             startPlayer?.play()
             
             self.initializeIdleTimer()
@@ -170,41 +176,11 @@ public class SpeechMaster: NSObject {
     }
     
     private func stopAudioEngine() {
-        
-        if let stopAudioFile = stopAudioFile {
-            stopPlayer?.scheduleFile(stopAudioFile, at: nil) {
-                self.startPlayer = nil
-                self.stopPlayer = nil
-                self.audioEngine.stop()
-                self.audioEngine.reset()
-            }
-            stopPlayer?.play()
-        } else {
-            self.audioEngine.stop()
-            self.audioEngine.reset()
-        }
-        
+        stopPlayer?.currentTime = 0
+        stopPlayer?.play()
+        self.audioEngine.stop()
+        self.audioEngine.reset()
         audioEngine.inputNode.removeTap(onBus: 0)
-    }
-    
-    // MARK: - AVAudioPlayerNode
-    
-    private func setupAudioPlayerNode() {
-       
-        if let startAudioFile = startAudioFile {
-            startPlayer = AVAudioPlayerNode()
-            self.connect(playerNode: startPlayer!, format: startAudioFile.processingFormat)
-        }
-        
-        if let stopAudioFile = stopAudioFile {
-            stopPlayer = AVAudioPlayerNode()
-            self.connect(playerNode: stopPlayer!, format: stopAudioFile.processingFormat)
-        }
-    }
-    
-    private func connect(playerNode node: AVAudioPlayerNode, format: AVAudioFormat) {
-        audioEngine.attach(node)
-        audioEngine.connect(node, to: audioEngine.mainMixerNode, format: format)
     }
     
     // MARK: - Timer
@@ -242,7 +218,7 @@ extension SpeechMaster: SFSpeechRecognitionTaskDelegate {
     
     // Called when the task is no longer accepting new audio but may be finishing final processing
     public func speechRecognitionTaskFinishedReadingAudio(_ task: SFSpeechRecognitionTask) {
-       // Maybe play stop audio sound
+       
     }
     
     // Called when the task has been cancelled, either by client app, the user, or the system
