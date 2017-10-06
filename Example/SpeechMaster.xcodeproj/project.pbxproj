@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B89C63B1F87696E00DA0A44 /* end.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2B89C6391F87696200DA0A44 /* end.wav */; };
+		2B89C63C1F87696E00DA0A44 /* error.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2B89C6381F87696100DA0A44 /* error.wav */; };
+		2B89C63D1F87696E00DA0A44 /* start.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2B89C63A1F87696200DA0A44 /* start.wav */; };
 		59A13E5404B0900CCED80A64 /* Pods_SpeechMaster_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5A4437F6ECA18C906C454B6 /* Pods_SpeechMaster_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
@@ -29,6 +32,9 @@
 
 /* Begin PBXFileReference section */
 		15C5DD2FBBF4AEE8DD70FFC3 /* Pods_SpeechMaster_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpeechMaster_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B89C6381F87696100DA0A44 /* error.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = error.wav; sourceTree = "<group>"; };
+		2B89C6391F87696200DA0A44 /* end.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = end.wav; sourceTree = "<group>"; };
+		2B89C63A1F87696200DA0A44 /* start.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = start.wav; sourceTree = "<group>"; };
 		4B3DE4E089D03C8730A2DFE1 /* Pods-SpeechMaster_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeechMaster_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpeechMaster_Tests/Pods-SpeechMaster_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* SpeechMaster_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeechMaster_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -104,6 +110,9 @@
 		607FACD21AFB9204008FA782 /* Example for SpeechMaster */ = {
 			isa = PBXGroup;
 			children = (
+				2B89C6391F87696200DA0A44 /* end.wav */,
+				2B89C6381F87696100DA0A44 /* error.wav */,
+				2B89C63A1F87696200DA0A44 /* start.wav */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
@@ -251,7 +260,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
+				2B89C63D1F87696E00DA0A44 /* start.wav in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
+				2B89C63C1F87696E00DA0A44 /* error.wav in Resources */,
+				2B89C63B1F87696E00DA0A44 /* end.wav in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -40,6 +40,9 @@ extension ViewController: SpeechRequestDelegate {
     func speechAuthorized() {
       SpeechMaster.sharedInstance.resultDelegate = self
       SpeechMaster.sharedInstance.requestDelegate = self
+      SpeechMaster.sharedInstance.microphoneSoundOn = Bundle.main.url(forResource: "start", withExtension: "wav")
+      SpeechMaster.sharedInstance.microphoneSoundOff = Bundle.main.url(forResource: "end", withExtension: "wav")
+      SpeechMaster.sharedInstance.microphoneSoundCancel = Bundle.main.url(forResource: "error", withExtension: "wav")
       SpeechMaster.sharedInstance.startRecognition()
     }
     

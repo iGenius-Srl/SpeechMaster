@@ -73,7 +73,7 @@ public class SpeechMaster: NSObject {
     let audioEngine = AVAudioEngine()
     
     // Idle Timer
-    private let defaultTimeoutSeconds: TimeInterval = 2.5
+    private let defaultTimeoutSeconds: TimeInterval = 1.5
     private var idleTimer: Timer?
     
     // Flag 🚩
@@ -173,7 +173,6 @@ public class SpeechMaster: NSObject {
     }
     
     private func stopAudioEngine() {
-        
         stopPlayer?.scheduleFile(stopAudioFile!, at: nil) {
             self.startPlayer = nil
             self.stopPlayer = nil
