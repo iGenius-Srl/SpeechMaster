@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2B89C6311F868AD100DA0A44 /* SpeechMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B89C6301F868AD100DA0A44 /* SpeechMaster.swift */; };
+		2B89C63F1F87701200DA0A44 /* SpeechMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B89C63E1F87701200DA0A44 /* SpeechMaster.swift */; };
 		31F7FB528422913CA1D64F22695F1BFF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		5B9BA48A8859F48737514A5BA6AAF6F1 /* Pods-SpeechMaster_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B9DE704E37FAA8775AEBBD92046BC855 /* Pods-SpeechMaster_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7432719B6B2F6EF22DF59A9C770F7997 /* SpeechMaster-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E00EA47D26B7F2BEAA1CB541AF1CEB3 /* SpeechMaster-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -36,7 +36,7 @@
 		1A2994F46756BD8F23F7BBC96CF119AD /* Pods_SpeechMaster_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpeechMaster_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D1B0995A00262B0C61FB095B2F3B800 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		246D46831E9A8C2ED674CFC280F12158 /* Pods-SpeechMaster_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SpeechMaster_Tests-resources.sh"; sourceTree = "<group>"; };
-		2B89C6301F868AD100DA0A44 /* SpeechMaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechMaster.swift; sourceTree = "<group>"; };
+		2B89C63E1F87701200DA0A44 /* SpeechMaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpeechMaster.swift; path = SpeechMaster/Classes/SpeechMaster.swift; sourceTree = "<group>"; };
 		2CC4BEB62D6227E899DEE5A59D6C1749 /* Pods-SpeechMaster_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SpeechMaster_Example.modulemap"; sourceTree = "<group>"; };
 		3D76E391576C4D98D03FCE3C7689B692 /* Pods-SpeechMaster_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SpeechMaster_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		419C9EA2EDCADFFFE144CDF3A7D99170 /* Pods-SpeechMaster_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SpeechMaster_Tests-dummy.m"; sourceTree = "<group>"; };
@@ -95,8 +95,8 @@
 		18C6F83858E7B57A55CF3CE47495730A /* SpeechMaster */ = {
 			isa = PBXGroup;
 			children = (
+				2B89C63E1F87701200DA0A44 /* SpeechMaster.swift */,
 				98313D22868C067856506F3137E95313 /* Support Files */,
-				2B89C6301F868AD100DA0A44 /* SpeechMaster.swift */,
 			);
 			name = SpeechMaster;
 			path = ../..;
@@ -296,6 +296,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					42EC87458634BBD85CB81907B4AC3143 = {
+						LastSwiftMigration = 0900;
+					};
+				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -337,8 +342,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B89C6311F868AD100DA0A44 /* SpeechMaster.swift in Sources */,
 				BF4EED4C0AB80A4BF4F0DAB7B3E8E945 /* SpeechMaster-dummy.m in Sources */,
+				2B89C63F1F87701200DA0A44 /* SpeechMaster.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +363,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1665FF60EFC7E3EE0470CD47C19204C4 /* SpeechMaster.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -517,6 +523,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1665FF60EFC7E3EE0470CD47C19204C4 /* SpeechMaster.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
