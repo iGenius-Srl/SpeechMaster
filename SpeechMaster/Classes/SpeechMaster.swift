@@ -54,7 +54,7 @@ public class SpeechMaster: NSObject {
     public var microphoneSoundOff: URL?
     public var microphoneSoundCancel: URL?
     public var locale: Locale = Locale.current // CHECK SPEECH LOCALE AVAILABLE
-    public var idleTimeout: TimeInterval = 1 // OPTIONAL
+    public var idleTimeout: TimeInterval = 1.5 // OPTIONAL
     
     public weak var requestDelegate: SpeechRequestDelegate?
     public weak var resultDelegate: SpeechResultDelegate?
@@ -166,8 +166,7 @@ public class SpeechMaster: NSObject {
             try audioEngine.start()
             startPlayer?.currentTime = 0
             startPlayer?.play()
-            
-            self.initializeIdleTimer()
+            startPlayer?.delegate = self
         }
         catch (let error) {
             print("Errors on AVAudioEngine start - \(error.localizedDescription)")
@@ -207,6 +206,7 @@ extension SpeechMaster: SFSpeechRecognitionTaskDelegate {
     
     // Called when the task first detects speech in the source audio
     public func speechRecognitionDidDetectSpeech(_ task: SFSpeechRecognitionTask) {
+        self.initializeIdleTimer()
         🗣 = true
     }
     
@@ -236,10 +236,8 @@ extension SpeechMaster: SFSpeechRecognitionTaskDelegate {
     public func speechRecognitionTask(_ task: SFSpeechRecognitionTask, didFinishSuccessfully successfully: Bool) {
         print("Task finisched")
         print("successfully: \(successfully)")
-        
-        guard let error = task.error else { return }
-        
         self.destroyIdleTimer()
+        guard let error = task.error else { return }
         !🗣 ? self.resultDelegate?.speechResult(self, withText: nil, isFinal: true) : self.resultDelegate?.speechDidFail(self, withError: error)
     }
     
@@ -250,4 +248,11 @@ extension SpeechMaster: SFSpeechRecognitionTaskDelegate {
         self.resultDelegate?.speechResult(self, withText: recognitionResult.bestTranscription.formattedString, isFinal: true)
     }
     
+}
+// MARK: - AVAudioPlayerDelegate for startPlayer
+extension SpeechMaster: AVAudioPlayerDelegate {
+   
+    public func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+         self.initializeIdleTimer()
+    }
 }
