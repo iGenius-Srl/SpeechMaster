@@ -50,8 +50,8 @@ public protocol SpeechResultDelegate: class {
 
 public class SpeechMaster: NSObject {
     
-    public var microphoneSoundOn: URL?
-    public var microphoneSoundOff: URL?
+    public var microphoneSoundStart: URL?
+    public var microphoneSoundStop: URL?
     public var microphoneSoundCancel: URL?
     public var locale: Locale = Locale.current // CHECK SPEECH LOCALE AVAILABLE
     public var idleTimeout: TimeInterval = 1.5 // OPTIONAL
@@ -78,17 +78,26 @@ public class SpeechMaster: NSObject {
     
     // Player
     lazy var startPlayer: AVAudioPlayer? = {
-        guard let microphoneSoundOn = microphoneSoundOn else {
+        guard let microphoneSoundStart = microphoneSoundStart else {
             return nil
         }
-        return try? AVAudioPlayer(contentsOf: microphoneSoundOn)
+        let startPlayer = try? AVAudioPlayer(contentsOf: microphoneSoundStart)
+        startPlayer?.delegate = self
+        return startPlayer
     }()
     
     lazy var stopPlayer: AVAudioPlayer? = {
-        guard let microphoneSoundOff = microphoneSoundOff else {
+        guard let microphoneSoundStop = microphoneSoundStop else {
             return nil
         }
-        return try? AVAudioPlayer(contentsOf: microphoneSoundOff)
+        return try? AVAudioPlayer(contentsOf: microphoneSoundStop)
+    }()
+    
+    lazy var cancelPlayer: AVAudioPlayer? = {
+        guard let microphoneSoundCancel = microphoneSoundCancel else {
+            return nil
+        }
+        return try? AVAudioPlayer(contentsOf: microphoneSoundCancel)
     }()
     
     // MARK: - AVAudioSession
@@ -139,6 +148,7 @@ public class SpeechMaster: NSObject {
     public func stopRecognition() {
         guard audioEngine.isRunning else { return }
         request?.endAudio()
+        play(stopPlayer)
         stopAudioEngine()
         recognitionTask?.finish()
     }
@@ -146,6 +156,7 @@ public class SpeechMaster: NSObject {
     public func cancelRecognition() {
         guard audioEngine.isRunning else { return }
         request?.endAudio()
+        play(cancelPlayer)
         stopAudioEngine()
         recognitionTask?.cancel()
     }
@@ -164,9 +175,7 @@ public class SpeechMaster: NSObject {
         do {
             
             try audioEngine.start()
-            startPlayer?.currentTime = 0
-            startPlayer?.play()
-            startPlayer?.delegate = self
+            play(startPlayer)
         }
         catch (let error) {
             print("Errors on AVAudioEngine start - \(error.localizedDescription)")
@@ -175,11 +184,16 @@ public class SpeechMaster: NSObject {
     }
     
     private func stopAudioEngine() {
-        stopPlayer?.currentTime = 0
-        stopPlayer?.play()
         self.audioEngine.stop()
         self.audioEngine.reset()
         audioEngine.inputNode.removeTap(onBus: 0)
+    }
+    
+    // MARK: - AVAudioPlayer
+    
+    private func play(_ player: AVAudioPlayer?) {
+        player?.currentTime = 0
+        player?.play()
     }
     
     // MARK: - Timer
@@ -249,10 +263,14 @@ extension SpeechMaster: SFSpeechRecognitionTaskDelegate {
     }
     
 }
-// MARK: - AVAudioPlayerDelegate for startPlayer
+
+// MARK: - AVAudioPlayerDelegate
+
 extension SpeechMaster: AVAudioPlayerDelegate {
    
     public func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-         self.initializeIdleTimer()
+        if let startPlayer = startPlayer, startPlayer == player {
+            self.initializeIdleTimer()
+        }
     }
 }

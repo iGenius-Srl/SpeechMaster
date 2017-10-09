@@ -7,16 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		17DCBBDD1F87D37C0004F6B7 /* SpeechMasterError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DCBBDC1F87D37B0004F6B7 /* SpeechMasterError.swift */; };
 		31F7FB528422913CA1D64F22695F1BFF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		3FB3F25DDEED1D5C11B0897746BD626B /* SpeechMaster-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6D36DDED29F8CB33BD90EA46EF3C8F /* SpeechMaster-dummy.m */; };
 		5B9BA48A8859F48737514A5BA6AAF6F1 /* Pods-SpeechMaster_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B9DE704E37FAA8775AEBBD92046BC855 /* Pods-SpeechMaster_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7432719B6B2F6EF22DF59A9C770F7997 /* SpeechMaster-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = ABB7834F7787C900FF6D968CFA0DD197 /* SpeechMaster-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7432719B6B2F6EF22DF59A9C770F7997 /* SpeechMaster-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C62CDAA7BA4E25C5E29A72FC2BB4DCB7 /* SpeechMaster-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A25B6DAD263ED4E8C2E3855D12BEC24 /* SpeechMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203BC1DAA73CB318B97C0D67A77A52C7 /* SpeechMaster.swift */; };
 		8BCB14DB1FBF62A06CB74AA9B1FD73D8 /* Pods-SpeechMaster_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 419C9EA2EDCADFFFE144CDF3A7D99170 /* Pods-SpeechMaster_Tests-dummy.m */; };
-		9CEA2705EB29F1B19ABB538C5F5627E1 /* SpeechMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8EDCFA200540C7CA16FE17F997AF4E /* SpeechMaster.swift */; };
+		966E76E97F822D83D6BF0DF2A266BAD0 /* SpeechMasterError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041508396B3F48DA92299D9BCDF0EB0B /* SpeechMasterError.swift */; };
 		A7B8FB37465273076C9A73D7762851E8 /* Pods-SpeechMaster_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C9ACC9673EF06A8C057DE84BE2691313 /* Pods-SpeechMaster_Example-dummy.m */; };
 		BF1E54B32AC4917ED0BB69248AF7A19B /* Pods-SpeechMaster_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D1C2BA4B55B4E5300FD8E838A22D27B /* Pods-SpeechMaster_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CCC4C732116A9201AA3A47C5854407E2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		F6382675394FEA142CC5A1843866EE23 /* SpeechMaster-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C55748978283E3F152C6A8E81B2133F5 /* SpeechMaster-dummy.m */; };
 		FFC515AB7FF14CB021F02B7BDB18B105 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,35 +32,35 @@
 
 /* Begin PBXFileReference section */
 		004F254B19EB5413B7ACFCF34112243A /* Pods-SpeechMaster_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SpeechMaster_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		0C4CE2276CBA2F998F9D1EAA8C55BFE9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		17DCBBDC1F87D37B0004F6B7 /* SpeechMasterError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SpeechMasterError.swift; path = SpeechMaster/Classes/SpeechMasterError.swift; sourceTree = "<group>"; };
-		1A2994F46756BD8F23F7BBC96CF119AD /* Pods_SpeechMaster_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpeechMaster_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		041508396B3F48DA92299D9BCDF0EB0B /* SpeechMasterError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpeechMasterError.swift; path = SpeechMaster/Classes/SpeechMasterError.swift; sourceTree = "<group>"; };
+		072C18F37DCE88F071D1FAC844BD7B6B /* SpeechMaster.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SpeechMaster.modulemap; sourceTree = "<group>"; };
+		1A2994F46756BD8F23F7BBC96CF119AD /* Pods_SpeechMaster_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SpeechMaster_Tests.framework; path = "Pods-SpeechMaster_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		203BC1DAA73CB318B97C0D67A77A52C7 /* SpeechMaster.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpeechMaster.swift; path = SpeechMaster/Classes/SpeechMaster.swift; sourceTree = "<group>"; };
 		246D46831E9A8C2ED674CFC280F12158 /* Pods-SpeechMaster_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SpeechMaster_Tests-resources.sh"; sourceTree = "<group>"; };
-		2CC4BEB62D6227E899DEE5A59D6C1749 /* Pods-SpeechMaster_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SpeechMaster_Example.modulemap"; sourceTree = "<group>"; };
+		2CC4BEB62D6227E899DEE5A59D6C1749 /* Pods-SpeechMaster_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-SpeechMaster_Example.modulemap"; sourceTree = "<group>"; };
 		3D76E391576C4D98D03FCE3C7689B692 /* Pods-SpeechMaster_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SpeechMaster_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		419C9EA2EDCADFFFE144CDF3A7D99170 /* Pods-SpeechMaster_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SpeechMaster_Tests-dummy.m"; sourceTree = "<group>"; };
 		493385600176C4C68EC3232D258C5624 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5A8E8B42660B53D02E5FD0DFB0BFE350 /* SpeechMaster.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SpeechMaster.xcconfig; sourceTree = "<group>"; };
 		5D1C2BA4B55B4E5300FD8E838A22D27B /* Pods-SpeechMaster_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SpeechMaster_Tests-umbrella.h"; sourceTree = "<group>"; };
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		66EF75C06E1288D68BD875821ACE6E9B /* Pods-SpeechMaster_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SpeechMaster_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		68CDEFEAD6359302DB10F53143AC0065 /* SpeechMaster.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SpeechMaster.modulemap; sourceTree = "<group>"; };
-		6CA5AAE2493566BF3B36C7DC07CA3F79 /* SpeechMaster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SpeechMaster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6E6D36DDED29F8CB33BD90EA46EF3C8F /* SpeechMaster-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SpeechMaster-dummy.m"; sourceTree = "<group>"; };
-		79DA9471AD001689CCBFF7F940CBD285 /* Pods_SpeechMaster_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpeechMaster_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7F2BDCBC5D3FFCABD4391582ABC0CE1E /* SpeechMaster-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SpeechMaster-prefix.pch"; sourceTree = "<group>"; };
+		6CA5AAE2493566BF3B36C7DC07CA3F79 /* SpeechMaster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SpeechMaster.framework; path = SpeechMaster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		79DA9471AD001689CCBFF7F940CBD285 /* Pods_SpeechMaster_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SpeechMaster_Example.framework; path = "Pods-SpeechMaster_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		815D4109A5300C7FC9145F996BD8CCAD /* Pods-SpeechMaster_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SpeechMaster_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		ABB7834F7787C900FF6D968CFA0DD197 /* SpeechMaster-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SpeechMaster-umbrella.h"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		B5EA165408051E16F9E573383A2D097A /* Pods-SpeechMaster_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SpeechMaster_Example.release.xcconfig"; sourceTree = "<group>"; };
+		B71284DA675172084A8E0B3CBBE350DC /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9DE704E37FAA8775AEBBD92046BC855 /* Pods-SpeechMaster_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SpeechMaster_Example-umbrella.h"; sourceTree = "<group>"; };
-		BD8EDCFA200540C7CA16FE17F997AF4E /* SpeechMaster.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpeechMaster.swift; path = SpeechMaster/Classes/SpeechMaster.swift; sourceTree = "<group>"; };
 		C1B93594229340B87E127B97D9B92F90 /* Pods-SpeechMaster_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SpeechMaster_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		C55748978283E3F152C6A8E81B2133F5 /* SpeechMaster-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SpeechMaster-dummy.m"; sourceTree = "<group>"; };
+		C62CDAA7BA4E25C5E29A72FC2BB4DCB7 /* SpeechMaster-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SpeechMaster-umbrella.h"; sourceTree = "<group>"; };
 		C9ACC9673EF06A8C057DE84BE2691313 /* Pods-SpeechMaster_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SpeechMaster_Example-dummy.m"; sourceTree = "<group>"; };
+		CA76E87D74FCCA0EC7EEBFA0BE8796AB /* SpeechMaster-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SpeechMaster-prefix.pch"; sourceTree = "<group>"; };
 		CB9B2DCBE8EE9336BC1B55500CB7CEB2 /* Pods-SpeechMaster_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SpeechMaster_Example-resources.sh"; sourceTree = "<group>"; };
 		D527940DB55AAC7C6DC0D38E777D0F80 /* Pods-SpeechMaster_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SpeechMaster_Example-frameworks.sh"; sourceTree = "<group>"; };
 		D96FBF2CE1EB76109E606999546595E3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DD11D2013A979B2DC150B1FF443B99B0 /* Pods-SpeechMaster_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SpeechMaster_Tests.modulemap"; sourceTree = "<group>"; };
+		DD11D2013A979B2DC150B1FF443B99B0 /* Pods-SpeechMaster_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-SpeechMaster_Tests.modulemap"; sourceTree = "<group>"; };
+		E1CAD024B4A275823DED6C54FA377938 /* SpeechMaster.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SpeechMaster.xcconfig; sourceTree = "<group>"; };
 		EBEC85B31F76771C4C8984A9D71C6922 /* Pods-SpeechMaster_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SpeechMaster_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		FD946B7EE352E0C50ED21322E361B131 /* Pods-SpeechMaster_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SpeechMaster_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		FF9D7A029657E50EF4B4F552323F3AF6 /* Pods-SpeechMaster_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SpeechMaster_Tests-frameworks.sh"; sourceTree = "<group>"; };
@@ -112,25 +112,6 @@
 			path = "Target Support Files/Pods-SpeechMaster_Tests";
 			sourceTree = "<group>";
 		};
-		267D9AE9B66227DF2C81DA60EE3BA43A /* SpeechMaster */ = {
-			isa = PBXGroup;
-			children = (
-				BD8EDCFA200540C7CA16FE17F997AF4E /* SpeechMaster.swift */,
-				17DCBBDC1F87D37B0004F6B7 /* SpeechMasterError.swift */,
-				DED1EAF468E7F51F77439C4653B8A6FA /* Support Files */,
-			);
-			name = SpeechMaster;
-			path = ../..;
-			sourceTree = "<group>";
-		};
-		49FBE3891C045E373A1AD452215482CC /* Development Pods */ = {
-			isa = PBXGroup;
-			children = (
-				267D9AE9B66227DF2C81DA60EE3BA43A /* SpeechMaster */,
-			);
-			name = "Development Pods";
-			sourceTree = "<group>";
-		};
 		691B0F0005A600B6955C67C2CA7A8815 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,11 +122,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		7CCA6C76A6929409BAB5CE6B70BDE982 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F830373BC056232E75C4E9016952FFB6 /* SpeechMaster */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				49FBE3891C045E373A1AD452215482CC /* Development Pods */,
+				7CCA6C76A6929409BAB5CE6B70BDE982 /* Development Pods */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
 				691B0F0005A600B6955C67C2CA7A8815 /* Products */,
 				81C94D62A30D48265DA51D625F3B0E95 /* Targets Support Files */,
@@ -195,18 +184,29 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		DED1EAF468E7F51F77439C4653B8A6FA /* Support Files */ = {
+		DFE72BCDC9D395FFBD3CEEBE995A6E82 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				0C4CE2276CBA2F998F9D1EAA8C55BFE9 /* Info.plist */,
-				68CDEFEAD6359302DB10F53143AC0065 /* SpeechMaster.modulemap */,
-				5A8E8B42660B53D02E5FD0DFB0BFE350 /* SpeechMaster.xcconfig */,
-				6E6D36DDED29F8CB33BD90EA46EF3C8F /* SpeechMaster-dummy.m */,
-				7F2BDCBC5D3FFCABD4391582ABC0CE1E /* SpeechMaster-prefix.pch */,
-				ABB7834F7787C900FF6D968CFA0DD197 /* SpeechMaster-umbrella.h */,
+				B71284DA675172084A8E0B3CBBE350DC /* Info.plist */,
+				072C18F37DCE88F071D1FAC844BD7B6B /* SpeechMaster.modulemap */,
+				E1CAD024B4A275823DED6C54FA377938 /* SpeechMaster.xcconfig */,
+				C55748978283E3F152C6A8E81B2133F5 /* SpeechMaster-dummy.m */,
+				CA76E87D74FCCA0EC7EEBFA0BE8796AB /* SpeechMaster-prefix.pch */,
+				C62CDAA7BA4E25C5E29A72FC2BB4DCB7 /* SpeechMaster-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "Example/Pods/Target Support Files/SpeechMaster";
+			sourceTree = "<group>";
+		};
+		F830373BC056232E75C4E9016952FFB6 /* SpeechMaster */ = {
+			isa = PBXGroup;
+			children = (
+				203BC1DAA73CB318B97C0D67A77A52C7 /* SpeechMaster.swift */,
+				041508396B3F48DA92299D9BCDF0EB0B /* SpeechMasterError.swift */,
+				DFE72BCDC9D395FFBD3CEEBE995A6E82 /* Support Files */,
+			);
+			name = SpeechMaster;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,7 +243,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0C4118D34D57FA28B432D09CFA0EC38C /* Build configuration list for PBXNativeTarget "SpeechMaster" */;
 			buildPhases = (
-				4C8192587A8BF2DE920553D23B6A905E /* Sources */,
+				53F3DA03D59418B87125F7672823059A /* Sources */,
 				F332A65D4C353C704CD184925A669826 /* Frameworks */,
 				CB128936FC417BCFEE08295D6B8FAB12 /* Headers */,
 			);
@@ -328,13 +328,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4C8192587A8BF2DE920553D23B6A905E /* Sources */ = {
+		53F3DA03D59418B87125F7672823059A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3FB3F25DDEED1D5C11B0897746BD626B /* SpeechMaster-dummy.m in Sources */,
-				17DCBBDD1F87D37C0004F6B7 /* SpeechMasterError.swift in Sources */,
-				9CEA2705EB29F1B19ABB538C5F5627E1 /* SpeechMaster.swift in Sources */,
+				F6382675394FEA142CC5A1843866EE23 /* SpeechMaster-dummy.m in Sources */,
+				8A25B6DAD263ED4E8C2E3855D12BEC24 /* SpeechMaster.swift in Sources */,
+				966E76E97F822D83D6BF0DF2A266BAD0 /* SpeechMasterError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,7 +360,7 @@
 /* Begin XCBuildConfiguration section */
 		0B97583A32F88EB163F85DE5938C4F58 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5A8E8B42660B53D02E5FD0DFB0BFE350 /* SpeechMaster.xcconfig */;
+			baseConfigurationReference = E1CAD024B4A275823DED6C54FA377938 /* SpeechMaster.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -519,7 +519,7 @@
 		};
 		AB39B93904D32E6B725D8061BBB7CFB1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5A8E8B42660B53D02E5FD0DFB0BFE350 /* SpeechMaster.xcconfig */;
+			baseConfigurationReference = E1CAD024B4A275823DED6C54FA377938 /* SpeechMaster.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
