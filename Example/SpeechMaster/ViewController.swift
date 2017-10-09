@@ -10,6 +10,7 @@ import Speech
 class ViewController: UIViewController {
     
     @IBOutlet weak var textLabel: UILabel!
+    @IBOutlet weak var startButton: UIButton!
     
     lazy var speechMaster: SpeechMaster = {
         let speechMaster = SpeechMaster()
@@ -42,6 +43,7 @@ class ViewController: UIViewController {
                 print("Speech Recognition not Authorized. Please check on Settings")
             case .authorized:
                 OperationQueue.main.addOperation { [weak self] in
+                    try? self?.speechMaster.setAudioSession(active: true)
                     self?.speechMaster.startRecognition()
                 }
             }
@@ -57,7 +59,6 @@ class ViewController: UIViewController {
     
     @IBAction func stopAction(_ sender: Any) {
         speechMaster.stopRecognition()
-        
     }
     
     @IBAction func cancelAction(_ sender: Any) {
@@ -69,14 +70,25 @@ extension ViewController: SpeechMasterDelegate {
     
     func speechResult(_ speechMaster: SpeechMaster, withText text: String?, isFinal: Bool) {
         textLabel.text = text
+        if isFinal {
+            speechMaster.speak(text)
+            
+        }
     }
     
     func speechWasCancelled(_ speechMaster: SpeechMaster) {
         print("Speech was cancelled")
+        try? speechMaster.setAudioSession(active: false)
     }
     
     func speechDidFail(_ speechMaster: SpeechMaster, withError error: Error) {
         print("Speech did fail")
+        try? speechMaster.setAudioSession(active: false)
+    }
+    
+    func speech(_ speechMaster: SpeechMaster, didFinishSpeaking text: String) {
+        print("Speech did finish speaking")
+        try? speechMaster.setAudioSession(active: false)
     }
     
 }

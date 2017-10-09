@@ -78,6 +78,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="startButton" destination="55Q-i2-iC5" id="G73-JP-NaK"/>
                         <outlet property="textLabel" destination="1cI-cI-QdX" id="6HZ-mm-cYi"/>
                     </connections>
                 </viewController>

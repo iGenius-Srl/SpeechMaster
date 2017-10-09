@@ -9,10 +9,11 @@ import Speech
 
 // MARK: - SpeechResultDelegate
 
-public protocol SpeechMasterDelegate: class {
+@objc public protocol SpeechMasterDelegate: class {
     func speechResult(_ speechMaster: SpeechMaster, withText text: String?, isFinal: Bool)
     func speechWasCancelled(_ speechMaster: SpeechMaster)
     func speechDidFail(_ speechMaster: SpeechMaster, withError error: Error)
+    @objc optional func speech(_ speechMaster: SpeechMaster, didFinishSpeaking text: String)
 }
 
 // MARK: - Speech
@@ -27,12 +28,19 @@ public class SpeechMaster: NSObject {
     
     public weak var delegate: SpeechMasterDelegate?
     
-    // Speech
+    // Speech Recognition
     lazy private var speechRecognizer: SFSpeechRecognizer? = {
         return SFSpeechRecognizer(locale: locale)
     }()
     private var request: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
+    
+    // Text To Speech (TTS)
+    lazy private var speechSynthesizer: AVSpeechSynthesizer = {
+        let speechSynthesizer = AVSpeechSynthesizer()
+        speechSynthesizer.delegate = self
+        return speechSynthesizer
+    }()
     
     // AVFoundation
     let audioEngine = AVAudioEngine()
@@ -69,7 +77,7 @@ public class SpeechMaster: NSObject {
     
     // MARK: - AVAudioSession
     
-    private func setRecordingAudioSession(active: Bool) throws {
+    public func setAudioSession(active: Bool) throws {
         let audioSession = AVAudioSession.sharedInstance()
         let avopts:AVAudioSessionCategoryOptions  = [
             .mixWithOthers,
@@ -77,7 +85,6 @@ public class SpeechMaster: NSObject {
             .interruptSpokenAudioAndMixWithOthers,
             .defaultToSpeaker
         ]
-        
         try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord, with: avopts)
         try audioSession.setMode(AVAudioSessionModeSpokenAudio)
         try audioSession.overrideOutputAudioPort(AVAudioSessionPortOverride.speaker)
@@ -103,19 +110,13 @@ public class SpeechMaster: NSObject {
             return
         }
         
-        do {
-            try setRecordingAudioSession(active: true)
-        } catch (let error) {
-            self.delegate?.speechDidFail(self, withError: error)
-        }
-        
         request = SFSpeechAudioBufferRecognitionRequest()
         
         recognitionTask = speechRecognizer.recognitionTask(
             with: request!,
             delegate: self
         )
-        
+        stopSpeaking(at: .immediate)
         startAudioEngine()
         
     }
@@ -124,9 +125,9 @@ public class SpeechMaster: NSObject {
         if audioEngine.isRunning {
             play(stopPlayer)
         }
-        request?.endAudio()
-        recognitionTask?.finish()
-        stopAudioEngine()
+        
+        self._stopRecognition()
+        
     }
     
     public func cancelRecognition() {
@@ -138,10 +139,31 @@ public class SpeechMaster: NSObject {
         stopAudioEngine()
     }
     
+    public func speak(_ text: String?) {
+        guard let text = text, !text.isEmpty else {
+            try? self.setAudioSession(active: false)
+            return
+        }
+        let speechUtterance = AVSpeechUtterance(string: text)
+        speechUtterance.voice = AVSpeechSynthesisVoice(language: locale.languageCode)
+        speechSynthesizer.speak(speechUtterance)
+    }
+    
+    public func stopSpeaking(at boundary: AVSpeechBoundary) {
+        speechSynthesizer.stopSpeaking(at: boundary)
+    }
+    
+    // MARK: - Helper methods
+    
+    private func _stopRecognition() {
+        request?.endAudio()
+        recognitionTask?.finish()
+        stopAudioEngine()
+    }
+    
     // MARK: - AVAudioEngine
     
     private func startAudioEngine() {
-        
         let recordingFormat = audioEngine.inputNode.outputFormat(forBus: 0)
         audioEngine.inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer, when) in
             // It's invoked on any thread (also in the main thread).
@@ -155,6 +177,7 @@ public class SpeechMaster: NSObject {
             try audioEngine.start()
             play(startPlayer)
             startPlayer?.delegate = self
+            stopPlayer?.delegate = self
         }
         catch (let error) {
             print("Errors on AVAudioEngine start - \(error.localizedDescription)")
@@ -249,8 +272,17 @@ extension SpeechMaster: SFSpeechRecognitionTaskDelegate {
 extension SpeechMaster: AVAudioPlayerDelegate {
    
     public func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        if let startPlayer = startPlayer, startPlayer == player {
-            self.initializeIdleTimer()
+         self.initializeIdleTimer()
+         if let stopPlayer = stopPlayer, stopPlayer == player {
+            self._stopRecognition()
         }
+    }
+}
+
+// MARK: - AVSpeechSynthesizerDelegate
+
+extension SpeechMaster: AVSpeechSynthesizerDelegate {
+    public func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        self.delegate?.speech?(self, didFinishSpeaking: utterance.speechString)
     }
 }
