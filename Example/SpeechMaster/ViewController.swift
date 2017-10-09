@@ -13,8 +13,7 @@ class ViewController: UIViewController {
     
     lazy var speechMaster: SpeechMaster = {
         let speechMaster = SpeechMaster()
-        speechMaster.resultDelegate = self
-        speechMaster.requestDelegate = self
+        speechMaster.delegate = self
         speechMaster.microphoneSoundStart = Bundle.main.url(forResource: "start", withExtension: "wav")
         speechMaster.microphoneSoundStop = Bundle.main.url(forResource: "end", withExtension: "wav")
         speechMaster.microphoneSoundCancel = Bundle.main.url(forResource: "error", withExtension: "wav")
@@ -30,6 +29,28 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - Request Speech Authorization
+    
+    func requestSpeechAuthorization() {
+        SFSpeechRecognizer.requestAuthorization { authStatus in
+            
+            switch authStatus {
+                
+            case .notDetermined: fallthrough
+            case .denied: fallthrough
+            case .restricted:
+                print("Speech Recognition not Authorized. Please check on Settings")
+            case .authorized:
+                OperationQueue.main.addOperation { [weak self] in
+                    self?.speechMaster.startRecognition()
+                }
+            }
+            
+        }
+    }
+    
+    // MARK: - Actions
+    
     @IBAction func startAction(_ sender: Any) {
        requestSpeechAuthorization()
     }
@@ -44,23 +65,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: SpeechRequestDelegate {
-    
-    func speechAuthorized() {
-      speechMaster.startRecognition()
-    }
-    
-    func speechNotAvailable() {
-        print("Speech not available")
-    }
-    
-    func speechNotAuthorized(_ authStatus: SFSpeechRecognizerAuthorizationStatus) {
-      print("not authorized")
-    }
-    
-}
-
-extension ViewController: SpeechResultDelegate {
+extension ViewController: SpeechMasterDelegate {
     
     func speechResult(_ speechMaster: SpeechMaster, withText text: String?, isFinal: Bool) {
         textLabel.text = text

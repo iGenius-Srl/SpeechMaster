@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Let crystal access your microphone to talk to the advisor.</string>
+	<string>Allow access to run the example</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>Let crystal access Speech Recognition to turn your voice into text.</string>
+	<string>Allow access to run the example</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>

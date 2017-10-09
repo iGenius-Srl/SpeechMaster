@@ -7,40 +7,9 @@ import Foundation
 import UIKit
 import Speech
 
-// MARK: - SpeechRequestDelegate
-
-@objc public protocol SpeechRequestDelegate: class {
-    func speechAuthorized()
-    func speechNotAuthorized(_ authStatus: SFSpeechRecognizerAuthorizationStatus)
-    @objc optional func speechNotAvailable()
-}
-
-extension SpeechRequestDelegate where Self: UIViewController {
-    
-    public func requestSpeechAuthorization() {
-        SFSpeechRecognizer.requestAuthorization { authStatus in
-            
-            switch authStatus {
-                
-            case .notDetermined: fallthrough
-            case .denied: fallthrough
-            case .restricted:
-                OperationQueue.main.addOperation { [weak self] in
-                    self?.speechNotAuthorized(authStatus)
-                }
-            case .authorized:
-                OperationQueue.main.addOperation { [weak self] in
-                    self?.speechAuthorized()
-                }
-            }
-            
-        }
-    }
-}
-
 // MARK: - SpeechResultDelegate
 
-public protocol SpeechResultDelegate: class {
+public protocol SpeechMasterDelegate: class {
     func speechResult(_ speechMaster: SpeechMaster, withText text: String?, isFinal: Bool)
     func speechWasCancelled(_ speechMaster: SpeechMaster)
     func speechDidFail(_ speechMaster: SpeechMaster, withError error: Error)
@@ -56,8 +25,7 @@ public class SpeechMaster: NSObject {
     public var locale: Locale = Locale.current // CHECK SPEECH LOCALE AVAILABLE
     public var idleTimeout: TimeInterval = 1.5 // OPTIONAL
     
-    public weak var requestDelegate: SpeechRequestDelegate?
-    public weak var resultDelegate: SpeechResultDelegate?
+    public weak var delegate: SpeechMasterDelegate?
     
     // Speech
     lazy private var speechRecognizer: SFSpeechRecognizer? = {
@@ -114,7 +82,7 @@ public class SpeechMaster: NSObject {
     public func startRecognition() {
         
         guard let speechRecognizer = speechRecognizer else {
-            self.resultDelegate?.speechDidFail(self, withError: SpeechMasterError.localeNotSupported)
+            self.delegate?.speechDidFail(self, withError: SpeechMasterError.localeNotSupported)
             return
         }
         
@@ -124,14 +92,14 @@ public class SpeechMaster: NSObject {
         }
         
         guard speechRecognizer.isAvailable else {
-            self.requestDelegate?.speechNotAvailable?()
+            self.delegate?.speechDidFail(self, withError: SpeechMasterError.notAvailable)
             return
         }
         
         do {
             try setRecordingAudioSession(active: true)
         } catch (let error) {
-            self.resultDelegate?.speechDidFail(self, withError: error)
+            self.delegate?.speechDidFail(self, withError: error)
         }
         
         request = SFSpeechAudioBufferRecognitionRequest()
@@ -227,7 +195,7 @@ extension SpeechMaster: SFSpeechRecognitionTaskDelegate {
     // Called for all recognitions, including non-final hypothesis
     public func speechRecognitionTask(_ task: SFSpeechRecognitionTask, didHypothesizeTranscription transcription: SFTranscription) {
         self.initializeIdleTimer()
-        self.resultDelegate?.speechResult(self, withText: transcription.formattedString, isFinal: false)
+        self.delegate?.speechResult(self, withText: transcription.formattedString, isFinal: false)
     }
     
     // Called when the task is no longer accepting new audio but may be finishing final processing
@@ -239,7 +207,7 @@ extension SpeechMaster: SFSpeechRecognitionTaskDelegate {
     public func speechRecognitionTaskWasCancelled(_ task: SFSpeechRecognitionTask) {
         print("Task cancelled")
         self.destroyIdleTimer()
-        self.resultDelegate?.speechWasCancelled(self)
+        self.delegate?.speechWasCancelled(self)
     }
     
     // Called when recognition of all requested utterances is finished.
@@ -252,14 +220,14 @@ extension SpeechMaster: SFSpeechRecognitionTaskDelegate {
         print("successfully: \(successfully)")
         self.destroyIdleTimer()
         guard let error = task.error else { return }
-        !🗣 ? self.resultDelegate?.speechResult(self, withText: nil, isFinal: true) : self.resultDelegate?.speechDidFail(self, withError: error)
+        !🗣 ? self.delegate?.speechResult(self, withText: nil, isFinal: true) : self.delegate?.speechDidFail(self, withError: error)
     }
     
     // Called only for final recognitions of utterances. No more about the utterance will be reported
     public func speechRecognitionTask(_ task: SFSpeechRecognitionTask, didFinishRecognition recognitionResult: SFSpeechRecognitionResult) {
         print("Final result")
         self.destroyIdleTimer()
-        self.resultDelegate?.speechResult(self, withText: recognitionResult.bestTranscription.formattedString, isFinal: true)
+        self.delegate?.speechResult(self, withText: recognitionResult.bestTranscription.formattedString, isFinal: true)
     }
     
 }
