@@ -87,33 +87,25 @@ public class SpeechMaster: NSObject {
     
     // MARK: - AVAudioSession
     
-    private func _setAudioSession(active: Bool) throws {
-       
-        if shouldRestartSpeechRecognition() {
-            return ;
-        }
-        
-        print("audioSession is becoming \(active)")
-        
-        let audioSession = AVAudioSession.sharedInstance()
-        
-        let avopts:AVAudioSessionCategoryOptions = [
-            .defaultToSpeaker
-        ]
-        
-        try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord, with: avopts)
-        try audioSession.setMode(AVAudioSessionModeDefault)
-        try audioSession.setActive(active, with: .notifyOthersOnDeactivation)
-    }
-    
     public func setAudioSession(active: Bool) {
         do {
-            try self._setAudioSession(active: active)
-        } catch {
-            if audioEngine.isRunning {
-                play(errorPlayer)
+            if shouldRestartSpeechRecognition() {
+                return ;
             }
-            self.delegate?.speechDidFail(self, withError: SpeechMasterError.notAvailable)
+            
+            print("audioSession is becoming \(active)")
+            
+            let audioSession = AVAudioSession.sharedInstance()
+            
+            let avopts:AVAudioSessionCategoryOptions = [
+                .defaultToSpeaker
+            ]
+            
+            try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord, with: avopts)
+            try audioSession.setMode(AVAudioSessionModeDefault)
+            try audioSession.setActive(active, with: .notifyOthersOnDeactivation)
+        } catch {
+            print("IGNORE!! - error while setting audioSession status")
         }
     }
     
@@ -216,8 +208,7 @@ public class SpeechMaster: NSObject {
             try audioEngine.start()
             play(startPlayer)
             startPlayer?.delegate = self
-        }
-        catch (let error) {
+        } catch (let error) {
             print("Errors on AVAudioEngine start - \(error.localizedDescription)")
         }
     }
@@ -241,7 +232,7 @@ public class SpeechMaster: NSObject {
     private func initializeIdleTimer() {
         idleTimer?.invalidate()
         idleTimer = Timer.scheduledTimer(withTimeInterval: defaultTimeoutSeconds, repeats: false) { _ in
-            print("🔔")
+            print("🔔 timer was triggered - now i will stop the Recognition")
             self.stopRecognition()
         }
     }
@@ -312,8 +303,7 @@ extension SpeechMaster: SFSpeechRecognitionTaskDelegate {
         guard let error = task.error else { return }
         if !🗣 {
             self.delegate?.speechResult(self, withText: nil, isFinal: true)
-        }
-        else {
+        } else {
             if audioEngine.isRunning {
                 play(errorPlayer)
             }

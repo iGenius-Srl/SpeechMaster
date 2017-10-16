@@ -17,6 +17,7 @@ class ViewController: UIViewController {
         speechMaster.microphoneSoundStart = Bundle.main.url(forResource: "start", withExtension: "wav")
         speechMaster.microphoneSoundStop = Bundle.main.url(forResource: "end", withExtension: "wav")
         speechMaster.microphoneSoundCancel = Bundle.main.url(forResource: "error", withExtension: "wav")
+        speechMaster.microphoneSoundError = Bundle.main.url(forResource: "error", withExtension: "wav")
         return speechMaster
     }()
     
