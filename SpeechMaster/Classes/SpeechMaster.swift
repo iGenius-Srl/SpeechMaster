@@ -26,6 +26,7 @@ public class SpeechMaster: NSObject {
     public var microphoneSoundStart: URL?
     public var microphoneSoundStop: URL?
     public var microphoneSoundCancel: URL?
+    public var microphoneSoundError: URL?
     public var locale: Locale = Locale.current // CHECK SPEECH LOCALE AVAILABLE
     
     public var delegate: SpeechMasterDelegate?
@@ -60,8 +61,7 @@ public class SpeechMaster: NSObject {
         guard let microphoneSoundStart = microphoneSoundStart else {
             return nil
         }
-        let startPlayer = try? AVAudioPlayer(contentsOf: microphoneSoundStart)
-        return startPlayer
+        return try? AVAudioPlayer(contentsOf: microphoneSoundStart)
     }()
     
     lazy var stopPlayer: AVAudioPlayer? = {
@@ -76,6 +76,13 @@ public class SpeechMaster: NSObject {
             return nil
         }
         return try? AVAudioPlayer(contentsOf: microphoneSoundCancel)
+    }()
+    
+    lazy var errorPlayer: AVAudioPlayer? = {
+        guard let microphoneSoundError = microphoneSoundError else {
+            return nil
+        }
+        return try? AVAudioPlayer(contentsOf: microphoneSoundError)
     }()
     
     // MARK: - AVAudioSession
@@ -103,6 +110,9 @@ public class SpeechMaster: NSObject {
         do {
             try self._setAudioSession(active: active)
         } catch {
+            if audioEngine.isRunning {
+                play(errorPlayer)
+            }
             self.delegate?.speechDidFail(self, withError: SpeechMasterError.notAvailable)
         }
     }
@@ -125,6 +135,9 @@ public class SpeechMaster: NSObject {
         }
         self.setAudioSession(active: true)
         guard let speechRecognizer = speechRecognizer else {
+            if audioEngine.isRunning {
+                play(errorPlayer)
+            }
             self.delegate?.speechDidFail(self, withError: SpeechMasterError.localeNotSupported)
             return
         }
@@ -135,6 +148,9 @@ public class SpeechMaster: NSObject {
         }
         
         guard speechRecognizer.isAvailable else {
+            if audioEngine.isRunning {
+                play(errorPlayer)
+            }
             self.delegate?.speechDidFail(self, withError: SpeechMasterError.notAvailable)
             return
         }
@@ -249,6 +265,9 @@ public class SpeechMaster: NSObject {
         if let cancelPlayer = self.cancelPlayer, cancelPlayer.isPlaying {
             self.cancelPlayer?.stop()
         }
+        if let errorPlayer = self.errorPlayer, errorPlayer.isPlaying {
+            self.errorPlayer?.stop()
+        }
     }
     
 }
@@ -291,7 +310,15 @@ extension SpeechMaster: SFSpeechRecognitionTaskDelegate {
         print("successfully: \(successfully)")
         self.destroyIdleTimer()
         guard let error = task.error else { return }
-        !🗣 ? self.delegate?.speechResult(self, withText: nil, isFinal: true) : self.delegate?.speechDidFail(self, withError: error)
+        if !🗣 {
+            self.delegate?.speechResult(self, withText: nil, isFinal: true)
+        }
+        else {
+            if audioEngine.isRunning {
+                play(errorPlayer)
+            }
+            self.delegate?.speechDidFail(self, withError: error)
+        }
     }
     
     // Called only for final recognitions of utterances. No more about the utterance will be reported
