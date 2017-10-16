@@ -7,71 +7,122 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5B9BA48A8859F48737514A5BA6AAF6F1 /* Pods-SpeechMaster_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A97D9F7548085A9218A34C4660D3CCD7 /* Pods-SpeechMaster_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7432719B6B2F6EF22DF59A9C770F7997 /* SpeechMaster-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C62CDAA7BA4E25C5E29A72FC2BB4DCB7 /* SpeechMaster-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8A25B6DAD263ED4E8C2E3855D12BEC24 /* SpeechMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203BC1DAA73CB318B97C0D67A77A52C7 /* SpeechMaster.swift */; };
-		966E76E97F822D83D6BF0DF2A266BAD0 /* SpeechMasterError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041508396B3F48DA92299D9BCDF0EB0B /* SpeechMasterError.swift */; };
-		A7B8FB37465273076C9A73D7762851E8 /* Pods-SpeechMaster_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 829AF34A01FEEA4CC550FAD01588D994 /* Pods-SpeechMaster_Example-dummy.m */; };
-		CCC4C732116A9201AA3A47C5854407E2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		F6382675394FEA142CC5A1843866EE23 /* SpeechMaster-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C55748978283E3F152C6A8E81B2133F5 /* SpeechMaster-dummy.m */; };
-		FFC515AB7FF14CB021F02B7BDB18B105 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		006350E2E106457651D455D0005D1157 /* SpeechMaster-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C55748978283E3F152C6A8E81B2133F5 /* SpeechMaster-dummy.m */; };
+		286F1BD2F2B60E0889B023AE037FD5D8 /* Pulsator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0204F3B83EC44A2C48B0A2CEDA17F6FC /* Pulsator.swift */; };
+		2EB14761ECE7A4E9AE717B775D313237 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3917A50EB224EEDBC66971700D698782 /* UIKit.framework */; };
+		322BAF2BFF489D83B8CA7A8883F0B426 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33083C616C9CA8AF16FA7C690BC673C7 /* Foundation.framework */; };
+		371514F1CD9840861BD16C2A0C605872 /* Pods-SpeechMaster_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 829AF34A01FEEA4CC550FAD01588D994 /* Pods-SpeechMaster_Example-dummy.m */; };
+		597F2F8CDBBFD5F0F2C1EED40524DDA0 /* SpeechMaster-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C62CDAA7BA4E25C5E29A72FC2BB4DCB7 /* SpeechMaster-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5A889736389BF81F13628DEC066D248A /* SpeechMasterError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041508396B3F48DA92299D9BCDF0EB0B /* SpeechMasterError.swift */; };
+		6697F4D4D68A9D3F0D0ADF4E4F5E7BBA /* Pods-SpeechMaster_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A97D9F7548085A9218A34C4660D3CCD7 /* Pods-SpeechMaster_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		890EAC9314C064109DB8B0CA2E6A1FA0 /* SpeechMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203BC1DAA73CB318B97C0D67A77A52C7 /* SpeechMaster.swift */; };
+		8A5A87EC38EBA6A09DB07B2F397DE22C /* Pulsator-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9702C0661DF7932B3DF4EA830A2511E3 /* Pulsator-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8CC17E90E5B06653AFEFBB6B394C0196 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33083C616C9CA8AF16FA7C690BC673C7 /* Foundation.framework */; };
+		CB9AE14811FEF6DD7FF894FFA330FEA9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33083C616C9CA8AF16FA7C690BC673C7 /* Foundation.framework */; };
+		CD6965D99DC5F84743DDDE48A27965BC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB7751D4D791D1183FB66D3CCA52CD8E /* QuartzCore.framework */; };
+		CF646570059F01D4D6814F98D44169E7 /* Pulsator-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA22438E00760A50301A44CB8BCD341 /* Pulsator-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		DECAF49C0E00A17DC9F5F421E2C72FA0 /* PBXContainerItemProxy */ = {
+		6E05A75AAD78E31514C819C996F736FB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 42EC87458634BBD85CB81907B4AC3143;
+			remoteGlobalIDString = 217E7B714CB84A1C5CC34AB17FA6CECD;
 			remoteInfo = SpeechMaster;
+		};
+		7F577A746245B80289146671614DA537 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F5CE9B3083EC4E59E9BFEBBA3FF93AEB;
+			remoteInfo = Pulsator;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0204F3B83EC44A2C48B0A2CEDA17F6FC /* Pulsator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Pulsator.swift; path = Pulsator/Pulsator.swift; sourceTree = "<group>"; };
 		041508396B3F48DA92299D9BCDF0EB0B /* SpeechMasterError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpeechMasterError.swift; path = SpeechMaster/Classes/SpeechMasterError.swift; sourceTree = "<group>"; };
 		072C18F37DCE88F071D1FAC844BD7B6B /* SpeechMaster.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SpeechMaster.modulemap; sourceTree = "<group>"; };
 		203BC1DAA73CB318B97C0D67A77A52C7 /* SpeechMaster.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SpeechMaster.swift; path = SpeechMaster/Classes/SpeechMaster.swift; sourceTree = "<group>"; };
 		2D114449B68E6DAD2BBAAC078CD7167E /* Pods-SpeechMaster_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-SpeechMaster_Example.modulemap"; sourceTree = "<group>"; };
+		323D658F7B69CD886E7C71C0BE3647A0 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		33083C616C9CA8AF16FA7C690BC673C7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		332D2C15DCA68ED16B2E4C929A08BFB1 /* Pods-SpeechMaster_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SpeechMaster_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		3917A50EB224EEDBC66971700D698782 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		3A875D7F533E8A630095E3AC911DF3F4 /* Pulsator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pulsator.framework; path = Pulsator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DA22438E00760A50301A44CB8BCD341 /* Pulsator-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pulsator-dummy.m"; sourceTree = "<group>"; };
 		4E2A1C2E6778BA1F170299BF121C36F9 /* Pods-SpeechMaster_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SpeechMaster_Example.release.xcconfig"; sourceTree = "<group>"; };
-		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		53B368C3D14167BBEB90CE644F9EBC20 /* Pulsator.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pulsator.xcconfig; sourceTree = "<group>"; };
+		60C80ED1015E0066F5F351AA4BDD8115 /* SpeechMaster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SpeechMaster.framework; path = SpeechMaster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6644349C28B0D8B812BD70A0B8BC7E33 /* Pods-SpeechMaster_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SpeechMaster_Example-frameworks.sh"; sourceTree = "<group>"; };
 		829AF34A01FEEA4CC550FAD01588D994 /* Pods-SpeechMaster_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SpeechMaster_Example-dummy.m"; sourceTree = "<group>"; };
-		91E1EB9B6ED452CBB2946F072C7F4063 /* SpeechMaster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SpeechMaster.framework; path = SpeechMaster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9702C0661DF7932B3DF4EA830A2511E3 /* Pulsator-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pulsator-umbrella.h"; sourceTree = "<group>"; };
 		9ADE48972BAE05ED2F892EE873D9D40D /* Pods-SpeechMaster_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SpeechMaster_Example-resources.sh"; sourceTree = "<group>"; };
 		9BE52B97D9799BB353531D11ED8073B7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A97D9F7548085A9218A34C4660D3CCD7 /* Pods-SpeechMaster_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SpeechMaster_Example-umbrella.h"; sourceTree = "<group>"; };
+		AB011EE14760664073FEA37C702B191F /* Pulsator.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Pulsator.modulemap; sourceTree = "<group>"; };
 		B71284DA675172084A8E0B3CBBE350DC /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BBE7A3E403228A0B2946AE4611CF2425 /* Pods-SpeechMaster_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SpeechMaster_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		BD72CF145E35445EB3D51AF7BD858594 /* Pods_SpeechMaster_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SpeechMaster_Example.framework; path = "Pods-SpeechMaster_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C55748978283E3F152C6A8E81B2133F5 /* SpeechMaster-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SpeechMaster-dummy.m"; sourceTree = "<group>"; };
 		C62CDAA7BA4E25C5E29A72FC2BB4DCB7 /* SpeechMaster-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SpeechMaster-umbrella.h"; sourceTree = "<group>"; };
 		C7C1CF3564EBAAF99E990D17D7699267 /* Pods-SpeechMaster_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SpeechMaster_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		CA76E87D74FCCA0EC7EEBFA0BE8796AB /* SpeechMaster-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SpeechMaster-prefix.pch"; sourceTree = "<group>"; };
+		CF8E88A94471095769D974131126F086 /* Pulsator-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pulsator-prefix.pch"; sourceTree = "<group>"; };
 		E1CAD024B4A275823DED6C54FA377938 /* SpeechMaster.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SpeechMaster.xcconfig; sourceTree = "<group>"; };
-		E882B78682D7512C9BFCB6AE4EBD2E68 /* Pods_SpeechMaster_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SpeechMaster_Example.framework; path = "Pods-SpeechMaster_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB7751D4D791D1183FB66D3CCA52CD8E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		68AD85FDDC30D10F1471F56D6A936790 /* Frameworks */ = {
+		2F699E1110B174C7DDB893C9FEF17BEA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFC515AB7FF14CB021F02B7BDB18B105 /* Foundation.framework in Frameworks */,
+				CB9AE14811FEF6DD7FF894FFA330FEA9 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F332A65D4C353C704CD184925A669826 /* Frameworks */ = {
+		D4DA99590E5E4714B5C2CA4272CA7E69 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CCC4C732116A9201AA3A47C5854407E2 /* Foundation.framework in Frameworks */,
+				322BAF2BFF489D83B8CA7A8883F0B426 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E5B3B895D484D1E7AD274C4EF9B633E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CC17E90E5B06653AFEFBB6B394C0196 /* Foundation.framework in Frameworks */,
+				CD6965D99DC5F84743DDDE48A27965BC /* QuartzCore.framework in Frameworks */,
+				2EB14761ECE7A4E9AE717B775D313237 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		122DA2E5084A4393C29BE363C764795C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				93A319F2C1969B7AA0B17444A3F8BA22 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		27C5ECF5D8A31DDE0FFBE1699A5C586E /* Pulsator */ = {
+			isa = PBXGroup;
+			children = (
+				0204F3B83EC44A2C48B0A2CEDA17F6FC /* Pulsator.swift */,
+				B4F731BAC425750712347647640A2EE9 /* Support Files */,
+			);
+			name = Pulsator;
+			path = Pulsator;
+			sourceTree = "<group>";
+		};
 		3158D0740CC41A46CB3ABFBF23302F46 /* Pods-SpeechMaster_Example */ = {
 			isa = PBXGroup;
 			children = (
@@ -103,10 +154,19 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				7CCA6C76A6929409BAB5CE6B70BDE982 /* Development Pods */,
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				D071D0431B4A3C8460E678B9AB28C495 /* Products */,
+				122DA2E5084A4393C29BE363C764795C /* Frameworks */,
+				88BA676207ED4C980951678A56BFD4C2 /* Pods */,
+				A6BC81E2719CC53A99C545623009C8F8 /* Products */,
 				8E8CA7F842A6071475BC64B1D770A945 /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		88BA676207ED4C980951678A56BFD4C2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				27C5ECF5D8A31DDE0FFBE1699A5C586E /* Pulsator */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		8E8CA7F842A6071475BC64B1D770A945 /* Targets Support Files */ = {
@@ -117,29 +177,38 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+		93A319F2C1969B7AA0B17444A3F8BA22 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				D35AF013A5F0BAD4F32504907A52519E /* iOS */,
+				33083C616C9CA8AF16FA7C690BC673C7 /* Foundation.framework */,
+				FB7751D4D791D1183FB66D3CCA52CD8E /* QuartzCore.framework */,
+				3917A50EB224EEDBC66971700D698782 /* UIKit.framework */,
 			);
-			name = Frameworks;
+			name = iOS;
 			sourceTree = "<group>";
 		};
-		D071D0431B4A3C8460E678B9AB28C495 /* Products */ = {
+		A6BC81E2719CC53A99C545623009C8F8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E882B78682D7512C9BFCB6AE4EBD2E68 /* Pods_SpeechMaster_Example.framework */,
-				91E1EB9B6ED452CBB2946F072C7F4063 /* SpeechMaster.framework */,
+				BD72CF145E35445EB3D51AF7BD858594 /* Pods_SpeechMaster_Example.framework */,
+				3A875D7F533E8A630095E3AC911DF3F4 /* Pulsator.framework */,
+				60C80ED1015E0066F5F351AA4BDD8115 /* SpeechMaster.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D35AF013A5F0BAD4F32504907A52519E /* iOS */ = {
+		B4F731BAC425750712347647640A2EE9 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */,
+				323D658F7B69CD886E7C71C0BE3647A0 /* Info.plist */,
+				AB011EE14760664073FEA37C702B191F /* Pulsator.modulemap */,
+				53B368C3D14167BBEB90CE644F9EBC20 /* Pulsator.xcconfig */,
+				4DA22438E00760A50301A44CB8BCD341 /* Pulsator-dummy.m */,
+				CF8E88A94471095769D974131126F086 /* Pulsator-prefix.pch */,
+				9702C0661DF7932B3DF4EA830A2511E3 /* Pulsator-umbrella.h */,
 			);
-			name = iOS;
+			name = "Support Files";
+			path = "../Target Support Files/Pulsator";
 			sourceTree = "<group>";
 		};
 		DFE72BCDC9D395FFBD3CEEBE995A6E82 /* Support Files */ = {
@@ -170,32 +239,40 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		C9832768E2E272C01E5D6EB22C6847C7 /* Headers */ = {
+		32CEBD268FED93638D63EE366358D5E3 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B9BA48A8859F48737514A5BA6AAF6F1 /* Pods-SpeechMaster_Example-umbrella.h in Headers */,
+				8A5A87EC38EBA6A09DB07B2F397DE22C /* Pulsator-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CB128936FC417BCFEE08295D6B8FAB12 /* Headers */ = {
+		D580252B338404B0A3D402F8A1F68C2E /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7432719B6B2F6EF22DF59A9C770F7997 /* SpeechMaster-umbrella.h in Headers */,
+				6697F4D4D68A9D3F0D0ADF4E4F5E7BBA /* Pods-SpeechMaster_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FEC801E63FD6D6DEEF317AD3016DF244 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				597F2F8CDBBFD5F0F2C1EED40524DDA0 /* SpeechMaster-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		42EC87458634BBD85CB81907B4AC3143 /* SpeechMaster */ = {
+		217E7B714CB84A1C5CC34AB17FA6CECD /* SpeechMaster */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0C4118D34D57FA28B432D09CFA0EC38C /* Build configuration list for PBXNativeTarget "SpeechMaster" */;
+			buildConfigurationList = E1D31C28935FF912202E33B6AAC53A77 /* Build configuration list for PBXNativeTarget "SpeechMaster" */;
 			buildPhases = (
-				53F3DA03D59418B87125F7672823059A /* Sources */,
-				F332A65D4C353C704CD184925A669826 /* Frameworks */,
-				CB128936FC417BCFEE08295D6B8FAB12 /* Headers */,
+				4DC58F392DBA15EFE21E4157F2ACA5E8 /* Sources */,
+				2F699E1110B174C7DDB893C9FEF17BEA /* Frameworks */,
+				FEC801E63FD6D6DEEF317AD3016DF244 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -203,25 +280,43 @@
 			);
 			name = SpeechMaster;
 			productName = SpeechMaster;
-			productReference = 91E1EB9B6ED452CBB2946F072C7F4063 /* SpeechMaster.framework */;
+			productReference = 60C80ED1015E0066F5F351AA4BDD8115 /* SpeechMaster.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		DE96C2773E4C8100BABA187E1130E94C /* Pods-SpeechMaster_Example */ = {
+		A42DB6E8F40408D3528F326D8587055E /* Pods-SpeechMaster_Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B227CEC037889712584492450CE1ADD5 /* Build configuration list for PBXNativeTarget "Pods-SpeechMaster_Example" */;
+			buildConfigurationList = 64D0FF3F8DDB28A5DCC76439789542A6 /* Build configuration list for PBXNativeTarget "Pods-SpeechMaster_Example" */;
 			buildPhases = (
-				464759F17D6CF26260BD9CB134454C52 /* Sources */,
-				68AD85FDDC30D10F1471F56D6A936790 /* Frameworks */,
-				C9832768E2E272C01E5D6EB22C6847C7 /* Headers */,
+				27A7A0EA48F629EB7DD2807D423923B1 /* Sources */,
+				D4DA99590E5E4714B5C2CA4272CA7E69 /* Frameworks */,
+				D580252B338404B0A3D402F8A1F68C2E /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				01CFDDC0F818DB7B25D4CD2475F0786C /* PBXTargetDependency */,
+				F46F89F93098E0C10FBDE060DCA79200 /* PBXTargetDependency */,
+				A3C0817A5B11B4ADBA9D7BE7630601F4 /* PBXTargetDependency */,
 			);
 			name = "Pods-SpeechMaster_Example";
 			productName = "Pods-SpeechMaster_Example";
-			productReference = E882B78682D7512C9BFCB6AE4EBD2E68 /* Pods_SpeechMaster_Example.framework */;
+			productReference = BD72CF145E35445EB3D51AF7BD858594 /* Pods_SpeechMaster_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F5CE9B3083EC4E59E9BFEBBA3FF93AEB /* Pulsator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 13F206C08B11CC48B5BEB81B0583C8C3 /* Build configuration list for PBXNativeTarget "Pulsator" */;
+			buildPhases = (
+				FB4C8C362D297955E85FFCDEA1339E24 /* Sources */,
+				E5B3B895D484D1E7AD274C4EF9B633E9 /* Frameworks */,
+				32CEBD268FED93638D63EE366358D5E3 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Pulsator;
+			productName = Pulsator;
+			productReference = 3A875D7F533E8A630095E3AC911DF3F4 /* Pulsator.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -241,206 +336,64 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = D071D0431B4A3C8460E678B9AB28C495 /* Products */;
+			productRefGroup = A6BC81E2719CC53A99C545623009C8F8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DE96C2773E4C8100BABA187E1130E94C /* Pods-SpeechMaster_Example */,
-				42EC87458634BBD85CB81907B4AC3143 /* SpeechMaster */,
+				A42DB6E8F40408D3528F326D8587055E /* Pods-SpeechMaster_Example */,
+				F5CE9B3083EC4E59E9BFEBBA3FF93AEB /* Pulsator */,
+				217E7B714CB84A1C5CC34AB17FA6CECD /* SpeechMaster */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		464759F17D6CF26260BD9CB134454C52 /* Sources */ = {
+		27A7A0EA48F629EB7DD2807D423923B1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7B8FB37465273076C9A73D7762851E8 /* Pods-SpeechMaster_Example-dummy.m in Sources */,
+				371514F1CD9840861BD16C2A0C605872 /* Pods-SpeechMaster_Example-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		53F3DA03D59418B87125F7672823059A /* Sources */ = {
+		4DC58F392DBA15EFE21E4157F2ACA5E8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F6382675394FEA142CC5A1843866EE23 /* SpeechMaster-dummy.m in Sources */,
-				8A25B6DAD263ED4E8C2E3855D12BEC24 /* SpeechMaster.swift in Sources */,
-				966E76E97F822D83D6BF0DF2A266BAD0 /* SpeechMasterError.swift in Sources */,
+				006350E2E106457651D455D0005D1157 /* SpeechMaster-dummy.m in Sources */,
+				890EAC9314C064109DB8B0CA2E6A1FA0 /* SpeechMaster.swift in Sources */,
+				5A889736389BF81F13628DEC066D248A /* SpeechMasterError.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FB4C8C362D297955E85FFCDEA1339E24 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF646570059F01D4D6814F98D44169E7 /* Pulsator-dummy.m in Sources */,
+				286F1BD2F2B60E0889B023AE037FD5D8 /* Pulsator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		01CFDDC0F818DB7B25D4CD2475F0786C /* PBXTargetDependency */ = {
+		A3C0817A5B11B4ADBA9D7BE7630601F4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SpeechMaster;
-			target = 42EC87458634BBD85CB81907B4AC3143 /* SpeechMaster */;
-			targetProxy = DECAF49C0E00A17DC9F5F421E2C72FA0 /* PBXContainerItemProxy */;
+			target = 217E7B714CB84A1C5CC34AB17FA6CECD /* SpeechMaster */;
+			targetProxy = 6E05A75AAD78E31514C819C996F736FB /* PBXContainerItemProxy */;
+		};
+		F46F89F93098E0C10FBDE060DCA79200 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Pulsator;
+			target = F5CE9B3083EC4E59E9BFEBBA3FF93AEB /* Pulsator */;
+			targetProxy = 7F577A746245B80289146671614DA537 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		0B97583A32F88EB163F85DE5938C4F58 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E1CAD024B4A275823DED6C54FA377938 /* SpeechMaster.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SpeechMaster/SpeechMaster-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SpeechMaster/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SpeechMaster/SpeechMaster.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = SpeechMaster;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		2886FE7FA16CA58971F002F31C8DCFEE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 332D2C15DCA68ED16B2E4C929A08BFB1 /* Pods-SpeechMaster_Example.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-SpeechMaster_Example/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-SpeechMaster_Example/Pods-SpeechMaster_Example.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_SpeechMaster_Example;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		9BFC9E4A7AAD7A607ACE06D95A401A5A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_REQUIRED = NO;
-				COPY_PHASE_STRIP = NO;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_DEBUG=1",
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
-				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Debug;
-		};
-		AB39B93904D32E6B725D8061BBB7CFB1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E1CAD024B4A275823DED6C54FA377938 /* SpeechMaster.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/SpeechMaster/SpeechMaster-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/SpeechMaster/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/SpeechMaster/SpeechMaster.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = SpeechMaster;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		C009217EAB143C5110465BB7964174FA /* Release */ = {
+		106192E26936AB58572CA97BD51A88E1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4E2A1C2E6778BA1F170299BF121C36F9 /* Pods-SpeechMaster_Example.release.xcconfig */;
 			buildSettings = {
@@ -449,20 +402,16 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "Target Support Files/Pods-SpeechMaster_Example/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-SpeechMaster_Example/Pods-SpeechMaster_Example.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -471,65 +420,296 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		C03B8870130C98D1B02B59D003687524 /* Release */ = {
+		2D90DBBED69DDEE016949A5C120CD074 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E1CAD024B4A275823DED6C54FA377938 /* SpeechMaster.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SpeechMaster/SpeechMaster-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SpeechMaster/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SpeechMaster/SpeechMaster.modulemap";
+				PRODUCT_NAME = SpeechMaster;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3A2A213C210CDEA549CF6D725539645F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53B368C3D14167BBEB90CE644F9EBC20 /* Pulsator.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Pulsator/Pulsator-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Pulsator/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pulsator/Pulsator.modulemap";
+				PRODUCT_NAME = Pulsator;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		7C07ED8089F70A31B83996A8910D7F18 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGNING_REQUIRED = NO;
-				COPY_PHASE_STRIP = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		87018C9E613584DAAF5A1C753C42B965 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 332D2C15DCA68ED16B2E4C929A08BFB1 /* Pods-SpeechMaster_Example.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-SpeechMaster_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SpeechMaster_Example/Pods-SpeechMaster_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_SpeechMaster_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8F3154CEFB1DD0A6C03A363C22F34086 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E1CAD024B4A275823DED6C54FA377938 /* SpeechMaster.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SpeechMaster/SpeechMaster-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SpeechMaster/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/SpeechMaster/SpeechMaster.modulemap";
+				PRODUCT_NAME = SpeechMaster;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		98F29E7567052F62660DDD7069ADF73C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"POD_CONFIGURATION_RELEASE=1",
 					"$(inherited)",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
-				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
+		};
+		9EC517FBACA3E469A237B210F11CB51A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53B368C3D14167BBEB90CE644F9EBC20 /* Pulsator.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Pulsator/Pulsator-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Pulsator/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pulsator/Pulsator.modulemap";
+				PRODUCT_NAME = Pulsator;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0C4118D34D57FA28B432D09CFA0EC38C /* Build configuration list for PBXNativeTarget "SpeechMaster" */ = {
+		13F206C08B11CC48B5BEB81B0583C8C3 /* Build configuration list for PBXNativeTarget "Pulsator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0B97583A32F88EB163F85DE5938C4F58 /* Debug */,
-				AB39B93904D32E6B725D8061BBB7CFB1 /* Release */,
+				9EC517FBACA3E469A237B210F11CB51A /* Debug */,
+				3A2A213C210CDEA549CF6D725539645F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -537,17 +717,26 @@
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9BFC9E4A7AAD7A607ACE06D95A401A5A /* Debug */,
-				C03B8870130C98D1B02B59D003687524 /* Release */,
+				7C07ED8089F70A31B83996A8910D7F18 /* Debug */,
+				98F29E7567052F62660DDD7069ADF73C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B227CEC037889712584492450CE1ADD5 /* Build configuration list for PBXNativeTarget "Pods-SpeechMaster_Example" */ = {
+		64D0FF3F8DDB28A5DCC76439789542A6 /* Build configuration list for PBXNativeTarget "Pods-SpeechMaster_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2886FE7FA16CA58971F002F31C8DCFEE /* Debug */,
-				C009217EAB143C5110465BB7964174FA /* Release */,
+				87018C9E613584DAAF5A1C753C42B965 /* Debug */,
+				106192E26936AB58572CA97BD51A88E1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E1D31C28935FF912202E33B6AAC53A77 /* Build configuration list for PBXNativeTarget "SpeechMaster" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D90DBBED69DDEE016949A5C120CD074 /* Debug */,
+				8F3154CEFB1DD0A6C03A363C22F34086 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

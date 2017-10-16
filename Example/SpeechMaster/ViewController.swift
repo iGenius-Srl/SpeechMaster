@@ -13,8 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var startButton: UIButton!
     
     lazy var speechMaster: SpeechMaster = {
-        let speechMaster = SpeechMaster()
-        speechMaster.delegate = self
+        let speechMaster = SpeechMaster.shared
         speechMaster.microphoneSoundStart = Bundle.main.url(forResource: "start", withExtension: "wav")
         speechMaster.microphoneSoundStop = Bundle.main.url(forResource: "end", withExtension: "wav")
         speechMaster.microphoneSoundCancel = Bundle.main.url(forResource: "error", withExtension: "wav")
@@ -34,61 +33,60 @@ class ViewController: UIViewController {
     
     func requestSpeechAuthorization() {
         SFSpeechRecognizer.requestAuthorization { authStatus in
-            
-            switch authStatus {
-                
-            case .notDetermined: fallthrough
-            case .denied: fallthrough
-            case .restricted:
-                print("Speech Recognition not Authorized. Please check on Settings")
-            case .authorized:
-                OperationQueue.main.addOperation { [weak self] in
-                    try? self?.speechMaster.setAudioSession(active: true)
-                    self?.speechMaster.startRecognition()
+            OperationQueue.main.addOperation { [weak self] in
+                switch authStatus {
+                    
+                case .notDetermined: fallthrough
+                case .denied: fallthrough
+                case .restricted:
+                    self?.startButton.isUserInteractionEnabled = true
+                    print("Speech Recognition not Authorized. Please check on Settings")
+                case .authorized:
+                    let microphoneViewController = Storyboard.Main.instantiate(SecondaryViewController.self) as SecondaryViewController
+                    microphoneViewController.delegate = self
+                    self?.present(microphoneViewController,animated: true)
                 }
             }
-            
         }
     }
     
-    // MARK: - Actions
+    // MARK: - tapOnStart
     
     @IBAction func startAction(_ sender: Any) {
+       print("tap on Start")
+       startButton.isUserInteractionEnabled = false
        requestSpeechAuthorization()
     }
     
-    @IBAction func stopAction(_ sender: Any) {
-        speechMaster.stopRecognition()
-    }
-    
-    @IBAction func cancelAction(_ sender: Any) {
-        speechMaster.cancelRecognition()
-    }
 }
+
+// MARK - SpeechMasterDelegate
 
 extension ViewController: SpeechMasterDelegate {
     
     func speechResult(_ speechMaster: SpeechMaster, withText text: String?, isFinal: Bool) {
-        textLabel.text = text
         if isFinal {
-            speechMaster.speak(text)
-            
+            if let speechText = text {
+                textLabel.text = speechText
+                speechMaster.speak(speechText, after: 1)
+            }
+            startButton.isUserInteractionEnabled = true
         }
     }
     
     func speechWasCancelled(_ speechMaster: SpeechMaster) {
         print("Speech was cancelled")
-        try? speechMaster.setAudioSession(active: false)
+        startButton.isUserInteractionEnabled = true
     }
     
     func speechDidFail(_ speechMaster: SpeechMaster, withError error: Error) {
         print("Speech did fail")
-        try? speechMaster.setAudioSession(active: false)
+        startButton.isUserInteractionEnabled = true
     }
     
     func speech(_ speechMaster: SpeechMaster, didFinishSpeaking text: String) {
         print("Speech did finish speaking")
-        try? speechMaster.setAudioSession(active: false)
+        startButton.isUserInteractionEnabled = true
     }
     
 }

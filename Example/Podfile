@@ -2,5 +2,5 @@ use_frameworks!
 
 target 'SpeechMaster_Example' do
   pod 'SpeechMaster', :path => '../'
-
+  pod "Pulsator"
 end
