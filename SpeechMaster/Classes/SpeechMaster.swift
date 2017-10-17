@@ -7,7 +7,7 @@ import Foundation
 import UIKit
 import Speech
 
-// MARK: - SpeechResultDelegate
+// MARK: - SpeechMasterDelegate
 
 @objc public protocol SpeechMasterDelegate: class {
     func speechResult(_ speechMaster: SpeechMaster, withText text: String?, isFinal: Bool)
@@ -16,12 +16,15 @@ import Speech
     @objc optional func speech(_ speechMaster: SpeechMaster, didFinishSpeaking text: String)
 }
 
-// MARK: - Speech
+// MARK: - SpeechMaster
 
 public class SpeechMaster: NSObject {
     
+    // -------------------------
+    // MARK: - Public Properties
+    // -------------------------
+    
     public static let shared = SpeechMaster()
-    private override init() { }
     
     public var microphoneSoundStart: URL?
     public var microphoneSoundStop: URL?
@@ -31,8 +34,12 @@ public class SpeechMaster: NSObject {
     
     public var delegate: SpeechMasterDelegate?
     
+    // -------------------------
+    // MARK: - Private Properties
+    // -------------------------
+    
     // Speech Recognition
-    lazy private var speechRecognizer: SFSpeechRecognizer? = {
+    private lazy var speechRecognizer: SFSpeechRecognizer? = {
         return SFSpeechRecognizer(locale: locale)
     }()
     private var request: SFSpeechAudioBufferRecognitionRequest?
@@ -45,52 +52,56 @@ public class SpeechMaster: NSObject {
     }()
     
     // AVFoundation
-    let audioEngine = AVAudioEngine()
+    private let audioEngine = AVAudioEngine()
     
     // Idle Timer
     private let defaultTimeoutSeconds: TimeInterval = 1.5
     private var idleTimer: Timer?
     
-    
-    private var shouldRestartRecongnition = false
     // Flag 🚩
-    var 🗣: Bool = false
+    private var 🗣: Bool = false
+    private var shouldRestartRecongnition: Bool = false
     
-    // Player
-    lazy var startPlayer: AVAudioPlayer? = {
+    // Players
+    private lazy var startPlayer: AVAudioPlayer? = {
         guard let microphoneSoundStart = microphoneSoundStart else {
             return nil
         }
         return try? AVAudioPlayer(contentsOf: microphoneSoundStart)
     }()
     
-    lazy var stopPlayer: AVAudioPlayer? = {
+    private lazy var stopPlayer: AVAudioPlayer? = {
         guard let microphoneSoundStop = microphoneSoundStop else {
             return nil
         }
         return try? AVAudioPlayer(contentsOf: microphoneSoundStop)
     }()
     
-    lazy var cancelPlayer: AVAudioPlayer? = {
+    private lazy var cancelPlayer: AVAudioPlayer? = {
         guard let microphoneSoundCancel = microphoneSoundCancel else {
             return nil
         }
         return try? AVAudioPlayer(contentsOf: microphoneSoundCancel)
     }()
     
-    lazy var errorPlayer: AVAudioPlayer? = {
+    private lazy var errorPlayer: AVAudioPlayer? = {
         guard let microphoneSoundError = microphoneSoundError else {
             return nil
         }
         return try? AVAudioPlayer(contentsOf: microphoneSoundError)
     }()
     
+    // MARK: - Initializer
+    
+    private override init() { }
+    
     // MARK: - AVAudioSession
     
     public func setAudioSession(active: Bool) {
         do {
+            
             if shouldRestartSpeechRecognition() {
-                return ;
+                return
             }
             
             print("audioSession is becoming \(active)")
@@ -346,7 +357,7 @@ extension SpeechMaster: AVSpeechSynthesizerDelegate {
         restartSpeechRecognition()
     }
     
-    private func restartSpeechRecognition(){
+    private func restartSpeechRecognition() {
         if shouldRestartRecongnition {
             initializeIdleTimer()
             shouldRestartRecongnition = false
