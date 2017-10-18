@@ -12,15 +12,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
     
-    lazy var speechMaster: SpeechMaster = {
-        let speechMaster = SpeechMaster.shared
-        speechMaster.microphoneSoundStart = Bundle.main.url(forResource: "start", withExtension: "wav")
-        speechMaster.microphoneSoundStop = Bundle.main.url(forResource: "end", withExtension: "wav")
-        speechMaster.microphoneSoundCancel = Bundle.main.url(forResource: "error", withExtension: "wav")
-        speechMaster.microphoneSoundError = Bundle.main.url(forResource: "error", withExtension: "wav")
-        return speechMaster
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -55,7 +46,6 @@ class ViewController: UIViewController {
     
     @IBAction func startAction(_ sender: Any) {
        print("tap on Start")
-       startButton.isUserInteractionEnabled = false
        requestSpeechAuthorization()
     }
     
@@ -65,29 +55,25 @@ class ViewController: UIViewController {
 
 extension ViewController: SpeechMasterDelegate {
     
-    func speechResult(_ speechMaster: SpeechMaster, withText text: String?, isFinal: Bool) {
+    func speechResult(withText text: String?, isFinal: Bool) {
         if isFinal {
             if let speechText = text {
                 textLabel.text = speechText
-                speechMaster.speak(speechText, after: 1)
+                SpeechMaster.shared.speak(speechText, after: 1)
             }
-            startButton.isUserInteractionEnabled = true
         }
     }
     
-    func speechWasCancelled(_ speechMaster: SpeechMaster) {
+    func speechWasCancelled() {
         print("Speech was cancelled")
-        startButton.isUserInteractionEnabled = true
     }
     
-    func speechDidFail(_ speechMaster: SpeechMaster, withError error: Error) {
+    func speechDidFail(withError error: Error) {
         print("Speech did fail")
-        startButton.isUserInteractionEnabled = true
     }
     
-    func speech(_ speechMaster: SpeechMaster, didFinishSpeaking text: String) {
+    func speech(didFinishSpeaking text: String) {
         print("Speech did finish speaking")
-        startButton.isUserInteractionEnabled = true
     }
     
 }

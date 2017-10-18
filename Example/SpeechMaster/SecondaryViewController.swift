@@ -20,16 +20,6 @@ class SecondaryViewController: UIViewController {
     
     public var delegate: SpeechMasterDelegate? = nil
     
-    lazy var speechMaster: SpeechMaster = {
-        let speechMaster = SpeechMaster.shared
-        speechMaster.delegate = self
-        speechMaster.microphoneSoundStart = Bundle.main.url(forResource: "start", withExtension: "wav")
-        speechMaster.microphoneSoundStop = Bundle.main.url(forResource: "end", withExtension: "wav")
-        speechMaster.microphoneSoundCancel = Bundle.main.url(forResource: "error", withExtension: "wav")
-        speechMaster.microphoneSoundError = Bundle.main.url(forResource: "error", withExtension: "wav")
-        return speechMaster
-    }()
-    
     lazy var pulsator: Pulsator = {
         let pulsator = Pulsator()
         pulsator.backgroundColor = UIColor.red.cgColor
@@ -42,7 +32,13 @@ class SecondaryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         micButton.layer.superlayer?.insertSublayer(pulsator, below: micButton.layer)
-        self.speechMaster.startRecognition()
+        
+        SpeechMaster.shared.microphoneSoundStart = Bundle.main.url(forResource: "start", withExtension: "wav")
+        SpeechMaster.shared.microphoneSoundStop = Bundle.main.url(forResource: "end", withExtension: "wav")
+        SpeechMaster.shared.microphoneSoundCancel = Bundle.main.url(forResource: "error", withExtension: "wav")
+        SpeechMaster.shared.microphoneSoundError = Bundle.main.url(forResource: "error", withExtension: "wav")
+        SpeechMaster.shared.delegate = self
+        SpeechMaster.shared.startRecognition()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,39 +50,39 @@ class SecondaryViewController: UIViewController {
     }
     
     @IBAction func tapOnMic(_ sender: Any) {
-         print("tap on Stop")
-        speechMaster.stopRecognition()
+        print("tap on Stop")
+        SpeechMaster.shared.stopRecognition()
     }
     
     @IBAction func tapOnCancel(_ sender: Any) {
-        speechMaster.cancelRecognition()
+        SpeechMaster.shared.cancelRecognition()
     }
     
 }
 
 extension SecondaryViewController: SpeechMasterDelegate {
     
-    func speechResult(_ speechMaster: SpeechMaster, withText text: String?, isFinal: Bool) {
+    func speechResult(withText text: String?, isFinal: Bool) {
         textLabel.text = text
         if isFinal {
             print("FINALLY !!! \(String(describing: text))")
             dismiss(animated: true, completion: {
-                self.delegate?.speechResult(speechMaster, withText: text, isFinal: true)
+                self.delegate?.speechResult(withText: text, isFinal: true)
             })
         }
     }
     
-    func speechWasCancelled(_ speechMaster: SpeechMaster) {
+    func speechWasCancelled() {
         print("Speech was cancelled")
         dismiss(animated: true){
-             self.delegate?.speechWasCancelled(speechMaster)
+             self.delegate?.speechWasCancelled()
         }
     }
     
-    func speechDidFail(_ speechMaster: SpeechMaster, withError error: Error) {
+    func speechDidFail(withError error: Error) {
         print("Speech did fail")
         dismiss(animated: true){
-             self.delegate?.speechDidFail(speechMaster, withError: error)
+             self.delegate?.speechDidFail(withError: error)
         }
     }
     

@@ -10,10 +10,10 @@ import Speech
 // MARK: - SpeechMasterDelegate
 
 @objc public protocol SpeechMasterDelegate: class {
-    func speechResult(_ speechMaster: SpeechMaster, withText text: String?, isFinal: Bool)
-    func speechWasCancelled(_ speechMaster: SpeechMaster)
-    func speechDidFail(_ speechMaster: SpeechMaster, withError error: Error)
-    @objc optional func speech(_ speechMaster: SpeechMaster, didFinishSpeaking text: String)
+    func speechResult(withText text: String?, isFinal: Bool)
+    func speechWasCancelled()
+    func speechDidFail(withError error: Error)
+    @objc optional func speech(didFinishSpeaking text: String)
 }
 
 // MARK: - SpeechMaster
@@ -32,7 +32,7 @@ public class SpeechMaster: NSObject {
     public var microphoneSoundError: URL?
     public var locale: Locale = Locale.current // CHECK SPEECH LOCALE AVAILABLE
     
-    public var delegate: SpeechMasterDelegate?
+    public weak var delegate: SpeechMasterDelegate?
     
     // -------------------------
     // MARK: - Private Properties
@@ -52,7 +52,7 @@ public class SpeechMaster: NSObject {
     }()
     
     // AVFoundation
-    private let audioEngine = AVAudioEngine()
+    private var audioEngine: AVAudioEngine?
     
     // Idle Timer
     private let defaultTimeoutSeconds: TimeInterval = 1.5
@@ -98,14 +98,21 @@ public class SpeechMaster: NSObject {
     // MARK: - AVAudioSession
     
     public func setAudioSession(active: Bool) {
+        if !active {
+            DispatchQueue.main.async {
+                self._setAudioSession(active: false)
+            }
+        }
+        _setAudioSession(active: active)
+    }
+    
+    private func _setAudioSession(active: Bool) {
         do {
             
             if shouldRestartSpeechRecognition() {
                 return
             }
-            
-            print("audioSession is becoming \(active)")
-            
+                        
             let audioSession = AVAudioSession.sharedInstance()
             
             let avopts:AVAudioSessionCategoryOptions = [
@@ -120,44 +127,37 @@ public class SpeechMaster: NSObject {
         }
     }
     
-    private func shouldRestartSpeechRecognition() -> Bool {
-        shouldRestartRecongnition = speechSynthesizer?.isSpeaking ?? false
-        if shouldRestartRecongnition {
-            initializeIdleTimer()
-            return true
-        }
-        return false
-    }
-    
-    // MARK: - Methods
+    // MARK: - Recognition
     
     public func startRecognition() {
-        _stopAllAudio()
-        if shouldRestartSpeechRecognition() {
-            return ;
-        }
-        self.setAudioSession(active: true)
-        guard let speechRecognizer = speechRecognizer else {
-            if audioEngine.isRunning {
-                play(errorPlayer)
-            }
-            self.delegate?.speechDidFail(self, withError: SpeechMasterError.localeNotSupported)
-            return
-        }
         
-        guard !audioEngine.isRunning else {
+        guard !(audioEngine?.isRunning ?? false) else {
             print("SpeechMaster is already running")
             return
         }
         
-        guard speechRecognizer.isAvailable else {
-            if audioEngine.isRunning {
-                play(errorPlayer)
-            }
-            self.delegate?.speechDidFail(self, withError: SpeechMasterError.notAvailable)
+        self.destroyIdleTimer()
+        _stopAllAudio()
+        if shouldRestartSpeechRecognition() {
             return
         }
         
+        audioEngine = AVAudioEngine()
+
+        self.setAudioSession(active: true)
+
+        guard let speechRecognizer = speechRecognizer else {
+            play(errorPlayer)
+            self.delegate?.speechDidFail(withError: SpeechMasterError.localeNotSupported)
+            return
+        }
+        
+        guard speechRecognizer.isAvailable else {
+            play(errorPlayer)
+            self.delegate?.speechDidFail(withError: SpeechMasterError.notAvailable)
+            return
+        }
+       
         request = SFSpeechAudioBufferRecognitionRequest()
         
         recognitionTask = speechRecognizer.recognitionTask(
@@ -169,22 +169,31 @@ public class SpeechMaster: NSObject {
     }
     
     public func stopRecognition() {
-        if audioEngine.isRunning {
-            play(stopPlayer)
-        }
+        self.destroyIdleTimer()
+        play(stopPlayer)
         request?.endAudio()
         recognitionTask?.finish()
         stopAudioEngine()
     }
     
     public func cancelRecognition() {
-        if audioEngine.isRunning {
-            play(cancelPlayer)
-        }
+        self.destroyIdleTimer()
+        play(cancelPlayer)
         request?.endAudio()
         recognitionTask?.cancel()
         stopAudioEngine()
     }
+    
+    private func shouldRestartSpeechRecognition() -> Bool {
+        shouldRestartRecongnition = speechSynthesizer?.isSpeaking ?? false
+        if shouldRestartRecongnition {
+            initializeIdleTimer()
+            return true
+        }
+        return false
+    }
+    
+    // MARK: - Text to Speech
     
     public func speak(_ text: String?, after: Double = 0) {
         guard let text = text, !text.isEmpty else {
@@ -193,30 +202,27 @@ public class SpeechMaster: NSObject {
         
         let speechUtterance = AVSpeechUtterance(string: text)
         speechUtterance.voice = AVSpeechSynthesisVoice(language: locale.languageCode)
-        print("The voice is speaking")
         speechSynthesizer?.delegate = self
         self.speechSynthesizer?.speak(speechUtterance)
     }
     
     public func stopSpeaking(at boundary: AVSpeechBoundary) {
-        print("The voice should shutup")
         speechSynthesizer?.stopSpeaking(at: boundary)
     }
     
     // MARK: - AVAudioEngine
     
     private func startAudioEngine() {
-        audioEngine.inputNode.removeTap(onBus: 0)
-        let recordingFormat = audioEngine.inputNode.outputFormat(forBus: 0)
-        audioEngine.inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer, when) in
+        audioEngine?.inputNode.removeTap(onBus: 0)
+        let recordingFormat = audioEngine?.inputNode.outputFormat(forBus: 0)
+        audioEngine?.inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer, when) in
             // It's invoked on any thread (also in the main thread).
             self.request?.append(buffer)
         }
         
-        audioEngine.prepare()
-        
+        audioEngine?.prepare()
         do {
-            try audioEngine.start()
+            try audioEngine?.start()
             play(startPlayer)
             startPlayer?.delegate = self
         } catch (let error) {
@@ -225,33 +231,18 @@ public class SpeechMaster: NSObject {
     }
     
     private func stopAudioEngine() {
-        audioEngine.inputNode.removeTap(onBus: 0)
-        guard audioEngine.isRunning else { return }
-        self.audioEngine.stop()
-        self.audioEngine.reset()
+        audioEngine?.inputNode.removeTap(onBus: 0)
+        guard audioEngine?.isRunning ?? false else { return }
+        self.audioEngine?.stop()
+        self.audioEngine?.reset()
     }
     
     // MARK: - AVAudioPlayer
     
     private func play(_ player: AVAudioPlayer?) {
+        guard audioEngine?.isRunning ?? false else { return }
         player?.currentTime = 0
         player?.play()
-    }
-    
-    // MARK: - Timer
-    
-    private func initializeIdleTimer() {
-        idleTimer?.invalidate()
-        idleTimer = Timer.scheduledTimer(withTimeInterval: defaultTimeoutSeconds, repeats: false) { _ in
-            print("🔔 timer was triggered - now i will stop the Recognition")
-            self.stopRecognition()
-        }
-    }
-    
-    private func destroyIdleTimer() {
-        // invalidate timer and remove it
-        idleTimer?.invalidate()
-        idleTimer = nil
     }
     
     private func _stopAllAudio(){
@@ -272,6 +263,21 @@ public class SpeechMaster: NSObject {
         }
     }
     
+    // MARK: - Timer
+    
+    private func initializeIdleTimer() {
+        idleTimer?.invalidate()
+        idleTimer = Timer.scheduledTimer(withTimeInterval: defaultTimeoutSeconds, repeats: false) { _ in
+            self.stopRecognition()
+        }
+    }
+    
+    private func destroyIdleTimer() {
+        // invalidate timer and remove it
+        idleTimer?.invalidate()
+        idleTimer = nil
+    }
+    
 }
 
 // MARK: - SFSpeechRecognitionTaskDelegate
@@ -287,7 +293,7 @@ extension SpeechMaster: SFSpeechRecognitionTaskDelegate {
     // Called for all recognitions, including non-final hypothesis
     public func speechRecognitionTask(_ task: SFSpeechRecognitionTask, didHypothesizeTranscription transcription: SFTranscription) {
         self.initializeIdleTimer()
-        self.delegate?.speechResult(self, withText: transcription.formattedString, isFinal: false)
+        self.delegate?.speechResult(withText: transcription.formattedString, isFinal: false)
     }
     
     // Called when the task is no longer accepting new audio but may be finishing final processing
@@ -297,9 +303,8 @@ extension SpeechMaster: SFSpeechRecognitionTaskDelegate {
     
     // Called when the task has been cancelled, either by client app, the user, or the system
     public func speechRecognitionTaskWasCancelled(_ task: SFSpeechRecognitionTask) {
-        print("Task cancelled")
         self.destroyIdleTimer()
-        self.delegate?.speechWasCancelled(self)
+        self.delegate?.speechWasCancelled()
     }
     
     // Called when recognition of all requested utterances is finished.
@@ -308,17 +313,13 @@ extension SpeechMaster: SFSpeechRecognitionTaskDelegate {
     // **ATTENTION**
     // This method is called with successfully false also when the recognition is stopped without speaking.
     public func speechRecognitionTask(_ task: SFSpeechRecognitionTask, didFinishSuccessfully successfully: Bool) {
-        print("Task finisched")
-        print("successfully: \(successfully)")
         self.destroyIdleTimer()
         guard let error = task.error else { return }
         if !🗣 {
-            self.delegate?.speechResult(self, withText: nil, isFinal: true)
+            self.delegate?.speechResult(withText: nil, isFinal: true)
         } else {
-            if audioEngine.isRunning {
-                play(errorPlayer)
-            }
-            self.delegate?.speechDidFail(self, withError: error)
+            play(errorPlayer)
+            self.delegate?.speechDidFail(withError: error)
         }
     }
     
@@ -326,7 +327,7 @@ extension SpeechMaster: SFSpeechRecognitionTaskDelegate {
     public func speechRecognitionTask(_ task: SFSpeechRecognitionTask, didFinishRecognition recognitionResult: SFSpeechRecognitionResult) {
         print("Final result")
         self.destroyIdleTimer()
-        self.delegate?.speechResult(self, withText: recognitionResult.bestTranscription.formattedString, isFinal: true)
+        self.delegate?.speechResult(withText: recognitionResult.bestTranscription.formattedString, isFinal: true)
     }
     
 }
@@ -347,17 +348,15 @@ extension SpeechMaster: AVAudioPlayerDelegate {
 
 extension SpeechMaster: AVSpeechSynthesizerDelegate {
     public func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-        print("speechSynthesizer- didFinish")
         restartSpeechRecognition()
-        self.delegate?.speech?(self, didFinishSpeaking: utterance.speechString)
+        self.delegate?.speech?(didFinishSpeaking: utterance.speechString)
     }
     
     public func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
-        print("speechSynthesizer- didCancel")
         restartSpeechRecognition()
     }
     
-    private func restartSpeechRecognition() {
+    private func restartSpeechRecognition(){
         if shouldRestartRecongnition {
             initializeIdleTimer()
             shouldRestartRecongnition = false
