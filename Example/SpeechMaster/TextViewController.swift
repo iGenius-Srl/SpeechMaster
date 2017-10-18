@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  TextViewController.swift
 //  SpeechMaster
 //
 
@@ -7,7 +7,7 @@ import UIKit
 import SpeechMaster
 import Speech
 
-class ViewController: UIViewController {
+class TextViewController: UIViewController {
     
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var startButton: UIButton!
@@ -34,7 +34,7 @@ class ViewController: UIViewController {
                     self?.startButton.isUserInteractionEnabled = true
                     print("Speech Recognition not Authorized. Please check on Settings")
                 case .authorized:
-                    let microphoneViewController = Storyboard.Main.instantiate(SecondaryViewController.self) as SecondaryViewController
+                    let microphoneViewController = Storyboard.Main.instantiate(RecognitionViewController.self)
                     microphoneViewController.delegate = self
                     self?.present(microphoneViewController,animated: true)
                 }
@@ -53,7 +53,7 @@ class ViewController: UIViewController {
 
 // MARK - SpeechMasterDelegate
 
-extension ViewController: SpeechMasterDelegate {
+extension TextViewController: SpeechMasterDelegate {
     
     func speechResult(withText text: String?, isFinal: Bool) {
         if isFinal {

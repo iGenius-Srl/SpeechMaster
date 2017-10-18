@@ -2,17 +2,13 @@
 //  SecondaryViewController.swift
 //  SpeechMaster_Example
 //
-//  Created by Kristiyan Petrov on 10/10/17.
-//  Copyright © 2017 CocoaPods. All rights reserved.
-//
 
 import Foundation
 import UIKit
-import Pulsator
 import SpeechMaster
 import Speech
 
-class SecondaryViewController: UIViewController {
+class RecognitionViewController: UIViewController {
     
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var micButton: UIButton!
@@ -20,18 +16,8 @@ class SecondaryViewController: UIViewController {
     
     public var delegate: SpeechMasterDelegate? = nil
     
-    lazy var pulsator: Pulsator = {
-        let pulsator = Pulsator()
-        pulsator.backgroundColor = UIColor.red.cgColor
-        pulsator.animationDuration = 1.5
-        pulsator.radius = 100
-        pulsator.numPulse = 3
-        return pulsator
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        micButton.layer.superlayer?.insertSublayer(pulsator, below: micButton.layer)
         
         SpeechMaster.shared.microphoneSoundStart = Bundle.main.url(forResource: "start", withExtension: "wav")
         SpeechMaster.shared.microphoneSoundStop = Bundle.main.url(forResource: "end", withExtension: "wav")
@@ -43,10 +29,6 @@ class SecondaryViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        pulsator.start()
-        pulsator.position = micButton.layer.position
-        micButton.layoutIfNeeded()
-        micButton.setNeedsLayout()
     }
     
     @IBAction func tapOnMic(_ sender: Any) {
@@ -60,7 +42,7 @@ class SecondaryViewController: UIViewController {
     
 }
 
-extension SecondaryViewController: SpeechMasterDelegate {
+extension RecognitionViewController: SpeechMasterDelegate {
     
     func speechResult(withText text: String?, isFinal: Bool) {
         textLabel.text = text

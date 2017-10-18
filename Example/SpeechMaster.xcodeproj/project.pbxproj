@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2B1AA2841F8CDAE200FAFA92 /* SecondaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1AA2831F8CDAE200FAFA92 /* SecondaryViewController.swift */; };
+		2B1AA2841F8CDAE200FAFA92 /* RecognitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1AA2831F8CDAE200FAFA92 /* RecognitionViewController.swift */; };
 		2B1AA2861F8CDD4400FAFA92 /* StoryBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1AA2851F8CDD4400FAFA92 /* StoryBoard.swift */; };
 		2B89C63B1F87696E00DA0A44 /* end.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2B89C6391F87696200DA0A44 /* end.wav */; };
 		2B89C63C1F87696E00DA0A44 /* error.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2B89C6381F87696100DA0A44 /* error.wav */; };
 		2B89C63D1F87696E00DA0A44 /* start.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2B89C63A1F87696200DA0A44 /* start.wav */; };
+		2B9587241F979684001C9EA4 /* SingleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9587231F979684001C9EA4 /* SingleViewController.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
+		607FACD81AFB9204008FA782 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* TextViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
@@ -22,16 +23,17 @@
 
 /* Begin PBXFileReference section */
 		15C5DD2FBBF4AEE8DD70FFC3 /* Pods_SpeechMaster_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpeechMaster_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2B1AA2831F8CDAE200FAFA92 /* SecondaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryViewController.swift; sourceTree = "<group>"; };
+		2B1AA2831F8CDAE200FAFA92 /* RecognitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognitionViewController.swift; sourceTree = "<group>"; };
 		2B1AA2851F8CDD4400FAFA92 /* StoryBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBoard.swift; sourceTree = "<group>"; };
 		2B89C6381F87696100DA0A44 /* error.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = error.wav; sourceTree = "<group>"; };
 		2B89C6391F87696200DA0A44 /* end.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = end.wav; sourceTree = "<group>"; };
 		2B89C63A1F87696200DA0A44 /* start.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = start.wav; sourceTree = "<group>"; };
+		2B9587231F979684001C9EA4 /* SingleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleViewController.swift; sourceTree = "<group>"; };
 		4B3DE4E089D03C8730A2DFE1 /* Pods-SpeechMaster_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpeechMaster_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SpeechMaster_Tests/Pods-SpeechMaster_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* SpeechMaster_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeechMaster_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		607FACD71AFB9204008FA782 /* TextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -58,6 +60,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B9877581F97A19F000A03EC /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				2B89C6391F87696200DA0A44 /* end.wav */,
+				2B89C6381F87696100DA0A44 /* error.wav */,
+				2B89C63A1F87696200DA0A44 /* start.wav */,
+			);
+			name = sounds;
+			sourceTree = "<group>";
+		};
+		2B9877591F97A1AD000A03EC /* doubleViewController */ = {
+			isa = PBXGroup;
+			children = (
+				607FACD71AFB9204008FA782 /* TextViewController.swift */,
+				2B1AA2831F8CDAE200FAFA92 /* RecognitionViewController.swift */,
+			);
+			name = doubleViewController;
+			sourceTree = "<group>";
+		};
 		441A44CB844BE15F4CB80629 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -92,13 +113,11 @@
 		607FACD21AFB9204008FA782 /* Example for SpeechMaster */ = {
 			isa = PBXGroup;
 			children = (
-				2B89C6391F87696200DA0A44 /* end.wav */,
-				2B89C6381F87696100DA0A44 /* error.wav */,
-				2B89C63A1F87696200DA0A44 /* start.wav */,
+				2B9877581F97A19F000A03EC /* sounds */,
 				2B1AA2851F8CDD4400FAFA92 /* StoryBoard.swift */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
-				2B1AA2831F8CDAE200FAFA92 /* SecondaryViewController.swift */,
+				2B9587231F979684001C9EA4 /* SingleViewController.swift */,
+				2B9877591F97A1AD000A03EC /* doubleViewController */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -188,7 +207,7 @@
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
 						LastSwiftMigration = 0900;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -267,12 +286,10 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SpeechMaster_Example/Pods-SpeechMaster_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Pulsator/Pulsator.framework",
 				"${BUILT_PRODUCTS_DIR}/SpeechMaster/SpeechMaster.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Pulsator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SpeechMaster.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,9 +305,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B1AA2861F8CDD4400FAFA92 /* StoryBoard.swift in Sources */,
-				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				2B9587241F979684001C9EA4 /* SingleViewController.swift in Sources */,
+				607FACD81AFB9204008FA782 /* TextViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
-				2B1AA2841F8CDAE200FAFA92 /* SecondaryViewController.swift in Sources */,
+				2B1AA2841F8CDAE200FAFA92 /* RecognitionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,7 +441,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SpeechMaster/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -444,7 +462,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SpeechMaster/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;

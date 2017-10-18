@@ -112,7 +112,7 @@ public class SpeechMaster: NSObject {
             if shouldRestartSpeechRecognition() {
                 return
             }
-                        
+            
             let audioSession = AVAudioSession.sharedInstance()
             
             let avopts:AVAudioSessionCategoryOptions = [

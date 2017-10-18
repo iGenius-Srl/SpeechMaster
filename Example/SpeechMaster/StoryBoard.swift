@@ -2,9 +2,6 @@
 //  StoryBoard.swift
 //  SpeechMaster_Example
 //
-//  Created by Kristiyan Petrov on 10/10/17.
-//  Copyright © 2017 CocoaPods. All rights reserved.
-//
 
 import Foundation
 import UIKit
