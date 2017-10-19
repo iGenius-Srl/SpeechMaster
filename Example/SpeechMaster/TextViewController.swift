@@ -42,7 +42,7 @@ class TextViewController: UIViewController {
         }
     }
     
-    // MARK: - tapOnStart
+    // MARK: - Actions
     
     @IBAction func startAction(_ sender: Any) {
        print("tap on Start")
@@ -56,11 +56,9 @@ class TextViewController: UIViewController {
 extension TextViewController: SpeechMasterDelegate {
     
     func speechResult(withText text: String?, isFinal: Bool) {
-        if isFinal {
-            if let speechText = text {
-                textLabel.text = speechText
-                SpeechMaster.shared.speak(speechText, after: 1)
-            }
+        if isFinal, let speechText = text {
+            textLabel.text = speechText
+            SpeechMaster.shared.speak(speechText, after: 1)
         }
     }
     

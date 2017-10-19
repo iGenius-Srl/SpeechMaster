@@ -16,13 +16,18 @@ class SingleViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Setup audio files
         SpeechMaster.shared.microphoneSoundStart = Bundle.main.url(forResource: "start", withExtension: "wav")
         SpeechMaster.shared.microphoneSoundStop = Bundle.main.url(forResource: "end", withExtension: "wav")
         SpeechMaster.shared.microphoneSoundCancel = Bundle.main.url(forResource: "error", withExtension: "wav")
         SpeechMaster.shared.microphoneSoundError = Bundle.main.url(forResource: "error", withExtension: "wav")
+        
         SpeechMaster.shared.delegate = self
         enableStartButton(true)
     }
+    
+    // MARK: - Actions
 
     @IBAction func tapOnCancel(_ sender: Any) {
         SpeechMaster.shared.cancelRecognition()
@@ -36,6 +41,16 @@ class SingleViewController: UIViewController {
     
     @IBAction func tapOnStart(_ sender: Any) {
          requestSpeechAuthorization()
+    }
+    
+    func enableStartButton(_ enable: Bool) {
+        startButton.isUserInteractionEnabled = enable
+        stopButton.isUserInteractionEnabled = !enable
+        cancelButton.isUserInteractionEnabled = !enable
+        
+        startButton.alpha = enable ? 1.0 : 0.4
+        stopButton.alpha = !enable ? 1.0 : 0.4
+        cancelButton.alpha = !enable ? 1.0 : 0.4
     }
     
     // MARK: - Request Speech Authorization
@@ -57,38 +72,28 @@ class SingleViewController: UIViewController {
             }
         }
     }
-    
-    func enableStartButton(_ enable: Bool) {
-        startButton.isUserInteractionEnabled = enable
-        stopButton.isUserInteractionEnabled = !enable
-        cancelButton.isUserInteractionEnabled = !enable
-        
-        startButton.alpha = enable ? 1.0 : 0.4
-        stopButton.alpha = !enable ? 1.0 : 0.4
-        cancelButton.alpha = !enable ? 1.0 : 0.4
-    }
 
 }
+
+// MARK: - SpeechMasterDelegate
 
 extension SingleViewController: SpeechMasterDelegate {
     
     func speechResult(withText text: String?, isFinal: Bool) {
         textLabel.text = text
-        if isFinal {
-            if let speechText = text {
-                SpeechMaster.shared.speak(speechText, after: 1)
-                enableStartButton(true)
-            }
+        if isFinal, let speechText = text {
+            SpeechMaster.shared.speak(speechText, after: 1)
+            enableStartButton(true)
         }
     }
     
     func speechWasCancelled() {
         print("Speech was cancelled")
-         enableStartButton(true)
+        enableStartButton(true)
     }
     
     func speechDidFail(withError error: Error) {
-        print("Speech did fail")
+        print("Speech did fail: \(error)")
         enableStartButton(true)
     }
     

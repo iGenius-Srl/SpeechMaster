@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2B1AA2841F8CDAE200FAFA92 /* RecognitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1AA2831F8CDAE200FAFA92 /* RecognitionViewController.swift */; };
-		2B1AA2861F8CDD4400FAFA92 /* StoryBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1AA2851F8CDD4400FAFA92 /* StoryBoard.swift */; };
+		2B1AA2861F8CDD4400FAFA92 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1AA2851F8CDD4400FAFA92 /* Storyboard.swift */; };
 		2B89C63B1F87696E00DA0A44 /* end.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2B89C6391F87696200DA0A44 /* end.wav */; };
 		2B89C63C1F87696E00DA0A44 /* error.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2B89C6381F87696100DA0A44 /* error.wav */; };
 		2B89C63D1F87696E00DA0A44 /* start.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2B89C63A1F87696200DA0A44 /* start.wav */; };
@@ -24,7 +24,7 @@
 /* Begin PBXFileReference section */
 		15C5DD2FBBF4AEE8DD70FFC3 /* Pods_SpeechMaster_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpeechMaster_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B1AA2831F8CDAE200FAFA92 /* RecognitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecognitionViewController.swift; sourceTree = "<group>"; };
-		2B1AA2851F8CDD4400FAFA92 /* StoryBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBoard.swift; sourceTree = "<group>"; };
+		2B1AA2851F8CDD4400FAFA92 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
 		2B89C6381F87696100DA0A44 /* error.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = error.wav; sourceTree = "<group>"; };
 		2B89C6391F87696200DA0A44 /* end.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = end.wav; sourceTree = "<group>"; };
 		2B89C63A1F87696200DA0A44 /* start.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = start.wav; sourceTree = "<group>"; };
@@ -70,13 +70,13 @@
 			name = sounds;
 			sourceTree = "<group>";
 		};
-		2B9877591F97A1AD000A03EC /* doubleViewController */ = {
+		2B9877591F97A1AD000A03EC /* DoubleViewController */ = {
 			isa = PBXGroup;
 			children = (
 				607FACD71AFB9204008FA782 /* TextViewController.swift */,
 				2B1AA2831F8CDAE200FAFA92 /* RecognitionViewController.swift */,
 			);
-			name = doubleViewController;
+			name = DoubleViewController;
 			sourceTree = "<group>";
 		};
 		441A44CB844BE15F4CB80629 /* Pods */ = {
@@ -114,10 +114,10 @@
 			isa = PBXGroup;
 			children = (
 				2B9877581F97A19F000A03EC /* sounds */,
-				2B1AA2851F8CDD4400FAFA92 /* StoryBoard.swift */,
+				2B1AA2851F8CDD4400FAFA92 /* Storyboard.swift */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				2B9587231F979684001C9EA4 /* SingleViewController.swift */,
-				2B9877591F97A1AD000A03EC /* doubleViewController */,
+				2B9877591F97A1AD000A03EC /* DoubleViewController */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -304,7 +304,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B1AA2861F8CDD4400FAFA92 /* StoryBoard.swift in Sources */,
+				2B1AA2861F8CDD4400FAFA92 /* Storyboard.swift in Sources */,
 				2B9587241F979684001C9EA4 /* SingleViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* TextViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,

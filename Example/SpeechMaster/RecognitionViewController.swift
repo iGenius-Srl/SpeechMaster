@@ -14,7 +14,7 @@ class RecognitionViewController: UIViewController {
     @IBOutlet weak var micButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     
-    public var delegate: SpeechMasterDelegate? = nil
+    public weak var delegate: SpeechMasterDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +23,7 @@ class RecognitionViewController: UIViewController {
         SpeechMaster.shared.microphoneSoundStop = Bundle.main.url(forResource: "end", withExtension: "wav")
         SpeechMaster.shared.microphoneSoundCancel = Bundle.main.url(forResource: "error", withExtension: "wav")
         SpeechMaster.shared.microphoneSoundError = Bundle.main.url(forResource: "error", withExtension: "wav")
+        
         SpeechMaster.shared.delegate = self
         SpeechMaster.shared.startRecognition()
     }
@@ -42,28 +43,30 @@ class RecognitionViewController: UIViewController {
     
 }
 
+// MARK: - SpeechMasterDelegate
+
 extension RecognitionViewController: SpeechMasterDelegate {
     
     func speechResult(withText text: String?, isFinal: Bool) {
         textLabel.text = text
         if isFinal {
-            print("FINALLY !!! \(String(describing: text))")
-            dismiss(animated: true, completion: {
+            print("\(String(describing: text))")
+            dismiss(animated: true) {
                 self.delegate?.speechResult(withText: text, isFinal: true)
-            })
+            }
         }
     }
     
     func speechWasCancelled() {
         print("Speech was cancelled")
-        dismiss(animated: true){
+        dismiss(animated: true) {
              self.delegate?.speechWasCancelled()
         }
     }
     
     func speechDidFail(withError error: Error) {
         print("Speech did fail")
-        dismiss(animated: true){
+        dismiss(animated: true) {
              self.delegate?.speechDidFail(withError: error)
         }
     }

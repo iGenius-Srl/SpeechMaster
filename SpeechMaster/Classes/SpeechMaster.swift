@@ -245,21 +245,21 @@ public class SpeechMaster: NSObject {
         player?.play()
     }
     
-    private func _stopAllAudio(){
-        if let speech = self.speechSynthesizer, speech.isSpeaking {
-            self.speechSynthesizer?.stopSpeaking(at: .immediate)
+    private func _stopAllAudio() {
+        if let speechSynthesizer = self.speechSynthesizer, speechSynthesizer.isSpeaking {
+            speechSynthesizer.stopSpeaking(at: .immediate)
         }
         if let stopPlayer = self.stopPlayer, stopPlayer.isPlaying {
-            self.stopPlayer?.stop()
+            stopPlayer.stop()
         }
         if let startPlayer = self.startPlayer, startPlayer.isPlaying {
-            self.startPlayer?.stop()
+            startPlayer.stop()
         }
         if let cancelPlayer = self.cancelPlayer, cancelPlayer.isPlaying {
-            self.cancelPlayer?.stop()
+            cancelPlayer.stop()
         }
         if let errorPlayer = self.errorPlayer, errorPlayer.isPlaying {
-            self.errorPlayer?.stop()
+            errorPlayer.stop()
         }
     }
     
@@ -356,7 +356,7 @@ extension SpeechMaster: AVSpeechSynthesizerDelegate {
         restartSpeechRecognition()
     }
     
-    private func restartSpeechRecognition(){
+    private func restartSpeechRecognition() {
         if shouldRestartRecongnition {
             initializeIdleTimer()
             shouldRestartRecongnition = false
