@@ -8,7 +8,7 @@ import UIKit
 import Speech
 
 // MARK: - SpeechMasterDelegate
-
+@available(iOS 10, *)
 @objc public protocol SpeechMasterDelegate: class {
     func speechResult(withText text: String?, isFinal: Bool)
     func speechWasCancelled()
@@ -17,7 +17,7 @@ import Speech
 }
 
 // MARK: - SpeechMaster
-
+@available(iOS 10, *)
 public class SpeechMaster: NSObject {
     
     // -------------------------

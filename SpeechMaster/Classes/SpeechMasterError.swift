@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+@available(iOS 10, *)
 enum SpeechMasterError: Error {
     case localeNotSupported
     case notAvailable
