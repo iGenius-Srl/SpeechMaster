@@ -8,6 +8,7 @@ import UIKit
 import Speech
 
 // MARK: - SpeechMasterDelegate
+
 @available(iOS 10, *)
 @objc public protocol SpeechMasterDelegate: class {
     func speechResult(withText text: String?, isFinal: Bool)
@@ -17,6 +18,7 @@ import Speech
 }
 
 // MARK: - SpeechMaster
+
 @available(iOS 10, *)
 public class SpeechMaster: NSObject {
     
@@ -282,6 +284,7 @@ public class SpeechMaster: NSObject {
 
 // MARK: - SFSpeechRecognitionTaskDelegate
 
+@available(iOS 10, *)
 extension SpeechMaster: SFSpeechRecognitionTaskDelegate {
     
     // Called when the task first detects speech in the source audio
@@ -334,6 +337,7 @@ extension SpeechMaster: SFSpeechRecognitionTaskDelegate {
 
 // MARK: - AVAudioPlayerDelegate
 
+@available(iOS 10, *)
 extension SpeechMaster: AVAudioPlayerDelegate {
     
     public func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
@@ -346,6 +350,7 @@ extension SpeechMaster: AVAudioPlayerDelegate {
 
 // MARK: - AVSpeechSynthesizerDelegate
 
+@available(iOS 10, *)
 extension SpeechMaster: AVSpeechSynthesizerDelegate {
     public func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         restartSpeechRecognition()

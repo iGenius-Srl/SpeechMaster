@@ -11,6 +11,9 @@ Pod::Spec.new do |s|
   s.social_media_url = 'https://twitter.com/MoonCoders'
 
   s.source_files = 'SpeechMaster/Classes/**/*'
-  s.frameworks = 'AVFoundation', 'Speech'
+
+  s.ios.deployment_target = '8.0'
+
+  s.ios.frameworks = 'AVFoundation', 'Speech'
 
 end
