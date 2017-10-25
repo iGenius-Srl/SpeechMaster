@@ -20,11 +20,15 @@ pod 'SpeechMaster'
 
 ## Author
 
-Alex Gotev
+<img src="https://github.com/MoonCoders/resources/blob/master/moon_medium_logo.png" width=30% />
 
-Andrea Antonioni
+We're 3 friends who love to work on open source projects 💙.
 
-Kristiyan Petrov
+* Andrea Antonioni ([**@andrea_anto97**](https://twitter.com/andrea_anto97))
+* Kristiyan Petrov ([**@kristiyanP**](https://github.com/kristiyanP))
+* Alex Gotev ([**@gotev**](https://github.com/gotev))
+
+Get in touch with us saying hi 👋🏻 at [hello@mooncoders.co](mailto:hello@mooncoders.co). We're also on [Medium](https://medium.com/mooncoders) 🖊
 
 ## License
 
