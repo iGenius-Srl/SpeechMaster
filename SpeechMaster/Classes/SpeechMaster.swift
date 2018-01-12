@@ -32,7 +32,11 @@ public class SpeechMaster: NSObject {
     public var microphoneSoundStop: URL?
     public var microphoneSoundCancel: URL?
     public var microphoneSoundError: URL?
-    public var locale: Locale = Locale.current // CHECK SPEECH LOCALE AVAILABLE
+    public var locale: Locale = Locale.current {
+        didSet {
+            speechRecognizer = SFSpeechRecognizer(locale: locale)
+        }
+    }
     
     public weak var delegate: SpeechMasterDelegate?
     
