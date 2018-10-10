@@ -3,7 +3,7 @@ This application makes use of the following third party libraries:
 
 ## SpeechMaster
 
-Copyright (c) 2017 kristiyanP <petkris_bg@hotmail.it>
+Copyright (c) 2017 MoonCoders <hello@mooncoders.co>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

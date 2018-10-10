@@ -1,25 +1,29 @@
 {
   "name": "SpeechMaster",
-  "version": "0.1.0",
-  "summary": "A short description of SpeechMaster.",
-  "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/MoonCoders/SpeechMaster",
+  "version": "0.2.0",
+  "summary": "iOS Speech Recognition and Text to Speech made easy",
+  "description": "iOS Speech Recognition and Text to Speech made easy in Swift",
+  "homepage": "https://github.com/iGenius-Srl/SpeechMaster",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
   },
   "authors": {
-    "Kristiyan Petrov": "petrov.kristiyan@gmail.com",
-    "Andrea Antonioni": "andreaantonioni97@gmail.com",
-    "Alex Gotev": "alexgotev@gmail.com"
+    "mooncoders": "hello@mooncoders.co"
   },
   "source": {
     "git": "https://github.com/MoonCoders/SpeechMaster.git",
-    "tag": "0.1.0"
+    "tag": "0.2.0"
   },
   "social_media_url": "https://twitter.com/MoonCoders",
+  "source_files": "SpeechMaster/Classes/**/*",
   "platforms": {
     "ios": "10.0"
   },
-  "source_files": "SpeechMaster/Classes/**/*"
+  "ios": {
+    "frameworks": [
+      "AVFoundation",
+      "Speech"
+    ]
+  }
 }

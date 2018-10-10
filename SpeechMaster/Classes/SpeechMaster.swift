@@ -121,13 +121,12 @@ public class SpeechMaster: NSObject {
             
             let audioSession = AVAudioSession.sharedInstance()
             
-            let avopts:AVAudioSessionCategoryOptions = [
+            let avopts:AVAudioSession.CategoryOptions = [
                 .defaultToSpeaker
             ]
             
-            try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord, with: avopts)
-            try audioSession.setMode(AVAudioSessionModeDefault)
-            try audioSession.setActive(active, with: .notifyOthersOnDeactivation)
+            try audioSession.setCategory(AVAudioSession.Category.playAndRecord, mode: AVAudioSession.Mode.default, options: avopts)
+            try audioSession.setActive(active, options: .notifyOthersOnDeactivation)
         } catch {
             print("IGNORE!! - error while setting audioSession status")
         }
